@@ -98,7 +98,6 @@ object {
 	background-color: rgba(0, 0, 0, 0.1);
 }
 .fullHeihgt{
-  height: calc(100vh - 98px);
+  height: calc(100vh - 108px);
   overflow: auto;
-  background-color: #FFFFFF;
 }

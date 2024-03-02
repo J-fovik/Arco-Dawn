@@ -80,11 +80,6 @@ export const adminRoutes = [
         menuUrl: '/list/list',
         menuName: '普通列表',
       },
-      {
-        parentPath: '/list',
-        menuUrl: '/list/card-list',
-        menuName: '卡片列表',
-      },
     ],
   },
   {

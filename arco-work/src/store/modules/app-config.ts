@@ -21,6 +21,7 @@ const useAppConfigStore = defineStore('app-config', {
       this.theme = theme
       useTheme(theme)
     },
+    // 布局模式
     changeLayoutMode(mode: LayoutMode) {
       this.layoutMode = mode
     },

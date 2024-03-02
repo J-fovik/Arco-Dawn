@@ -131,7 +131,7 @@
     .main-base-style {
       height: 100%;
       box-sizing: border-box;
-      padding: 5px;
+      padding: 10px;
     }
     .main-base-light-theme {
       // background-color: #f0f2f5;
