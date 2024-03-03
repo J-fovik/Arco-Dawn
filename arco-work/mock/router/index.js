@@ -15,13 +15,6 @@ export const adminRoutes = [
         menuName: '主控台',
         routeName: 'home',
       },
-      // {
-      //   parentPath: '/index',
-      //   menuUrl: '/index/work-place',
-      //   menuName: '工作台',
-      //   routeName: 'workPlace',
-      //   isRootPath: true,
-      // },
     ],
   },
   {
@@ -31,14 +24,6 @@ export const adminRoutes = [
     parentPath: '',
     routeName: 'system',
     children: [
-      {
-        parentPath: '/system',
-        menuUrl: '/system/department',
-        menuName: '部门管理',
-        badge: 'new',
-        routeName: 'department',
-        localFilePath: '/system/local-path/department',
-      },
       {
         parentPath: '/system',
         menuUrl: '/system/user',
@@ -74,26 +59,6 @@ export const adminRoutes = [
         parentPath: '/list',
         menuUrl: '/list/table-custom',
         menuName: '自定义表格',
-      },
-      {
-        parentPath: '/list',
-        menuUrl: '/list/list',
-        menuName: '普通列表',
-      },
-    ],
-  },
-  {
-    menuUrl: '/form',
-    menuName: '表单demo',
-    badge: 'dot',
-    icon: 'icon-edit',
-    parentPath: '',
-    children: [
-      {
-        parentPath: '/form',
-        menuUrl: '/form/base-form-view',
-        menuName: '基本表单',
-        cacheable: true,
       },
     ],
   },
@@ -132,11 +97,6 @@ export const adminRoutes = [
       },
       {
         parentPath: '/other',
-        menuUrl: '/other/badge',
-        menuName: '消息提示',
-      },
-      {
-        parentPath: '/other',
         menuUrl: '/other/clipboard',
         menuName: '剪贴板',
       },
@@ -149,11 +109,6 @@ export const adminRoutes = [
         parentPath: '/other',
         menuUrl: '/other/qrcode',
         menuName: '二维码',
-      },
-      {
-        parentPath: '/other',
-        menuUrl: '/other/css-animation',
-        menuName: 'CSS动画',
       },
       {
         parentPath: '/other',
@@ -181,11 +136,6 @@ export const adminRoutes = [
         menuName: '内嵌iframe',
       },
       {
-        parentPath: '/other',
-        menuUrl: '/other/big-preview',
-        menuName: '大图预览',
-      },
-      {
         parentPath: '/upload',
         menuUrl: '/other/upload',
         menuName: '上传图片',
@@ -211,24 +161,6 @@ export const adminRoutes = [
     ],
   },
   {
-    menuUrl: '/result',
-    menuName: '结果页面',
-    icon: 'icon-file',
-    parentPath: '',
-    children: [
-      {
-        parentPath: '/result',
-        menuUrl: '/result/success',
-        menuName: '成功页面',
-      },
-      {
-        parentPath: '/result',
-        menuUrl: '/result/fail',
-        menuName: '失败页面',
-      },
-    ],
-  },
-  {
     menuUrl: '/editor',
     menuName: '编辑器',
     badge: '12',
@@ -239,11 +171,6 @@ export const adminRoutes = [
         parentPath: '/editor',
         menuUrl: '/editor/rich-text',
         menuName: '富文本',
-      },
-      {
-        parentPath: '/editor',
-        menuUrl: '/editor/markdown',
-        menuName: 'markdown',
       },
     ],
   },
@@ -273,59 +200,9 @@ export const adminRoutes = [
     children: [
       {
         parentPath: '/draggable',
-        menuUrl: '/draggable/dialog-draggable',
-        menuName: '拖拽对话框',
-      },
-      {
-        parentPath: '/draggable',
         menuUrl: '/draggable/card-draggable',
         menuName: '卡片拖拽',
         cacheable: true,
-      },
-    ],
-  },
-  {
-    menuUrl: '/next',
-    menuName: '多级菜单',
-    icon: 'icon-share-alt',
-    parentPath: '',
-    children: [
-      {
-        parentPath: '/next',
-        menuUrl: '/next/menu1',
-        menuName: 'menu-1',
-        cacheable: true,
-      },
-      {
-        parentPath: '/next',
-        menuUrl: '/next/menu2',
-        menuName: 'menu-2',
-        children: [
-          {
-            parentPath: '/next/menu2',
-            menuUrl: '/next/menu2/menu-2-1',
-            menuName: 'menu-2-1',
-            children: [
-              {
-                parentPath: '/next/menu2/menu-2-1',
-                menuUrl: '/next/menu2/menu-2-1/menu-2-1-1',
-                menuName: 'menu-2-1-1',
-                cacheable: true,
-              },
-              {
-                parentPath: '/next/menu2/menu-2-1',
-                menuUrl: '/next/menu2/menu-2-1/menu-2-1-2',
-                menuName: 'menu-2-1-2',
-              },
-            ],
-          },
-          {
-            parentPath: '/next/menu2',
-            menuUrl: '/next/menu2/menu-2-2',
-            menuName: 'menu-2-2',
-            cacheable: true,
-          },
-        ],
       },
     ],
   },
@@ -466,52 +343,6 @@ export const editorRoutes = [
         parentPath: '/other',
         menuUrl: '/other/city-selector',
         menuName: '省市区选择器',
-      },
-    ],
-  },
-  {
-    menuUrl: '/next',
-    menuName: '多级菜单',
-    iconPrefix: 'iconfont',
-    icon: 'Partition',
-    parentPath: '',
-    children: [
-      {
-        parentPath: '/next',
-        menuUrl: '/next/menu1',
-        menuName: 'menu-1',
-        cacheable: true,
-      },
-      {
-        parentPath: '/next',
-        menuUrl: '/next/menu2',
-        menuName: 'menu-2',
-        children: [
-          {
-            parentPath: '/next/menu2',
-            menuUrl: '/next/menu2/menu-2-1',
-            menuName: 'menu-2-1',
-            children: [
-              {
-                parentPath: '/next/menu2/menu-2-1',
-                menuUrl: '/next/menu2/menu-2-1/menu-2-1-1',
-                menuName: 'menu-2-1-1',
-                cacheable: true,
-              },
-              {
-                parentPath: '/next/menu2/menu-2-1',
-                menuUrl: '/next/menu2/menu-2-1/menu-2-1-2',
-                menuName: 'menu-2-1-2',
-              },
-            ],
-          },
-          {
-            parentPath: '/next/menu2',
-            menuUrl: '/next/menu2/menu-2-2',
-            menuName: 'menu-2-2',
-            cacheable: true,
-          },
-        ],
       },
     ],
   },
