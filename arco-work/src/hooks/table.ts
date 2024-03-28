@@ -120,7 +120,7 @@ export const usePagination = function (callback: () => void) {
   }
   const paginationInfo = reactive({
     page: 1,
-    pageSize: 10,
+    pageSize: 20,
     showSizePicker: true,
     pageCount: 1,
     pageSizes: ['10', '20', '30', '40'],

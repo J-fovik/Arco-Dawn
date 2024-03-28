@@ -8,26 +8,12 @@
       </TableHeader>
     </template>
     <template #default>
-      <a-table
-        :bordered="false"
-        :row-selection="{ selectedRowKeys }"
-        :loading="tableLoading"
-        :data="dataList"
-        :pagination="false"
-        :rowKey="rowKey"
-        table-layout-fixed
-        :scroll="{ y: tableHeight }"
-        @selection-change="onSelectionChange"
-      >
+      <a-table :bordered="false" :row-selection="{ selectedRowKeys }" :loading="tableLoading" :data="dataList"
+        :pagination="false" :rowKey="rowKey" table-layout-fixed :scroll="{ y: tableHeight }"
+        @selection-change="onSelectionChange">
         <template #columns>
-          <a-table-column
-            v-for="item of tableColumns"
-            :key="item.key"
-            :align="item.align"
-            :title="(item.title as string)"
-            :data-index="(item.key as string)"
-            :fixed="item.fixed"
-          >
+          <a-table-column v-for="item of tableColumns" :key="item.key" :align="item.align"
+            :title="(item.title as string)" :data-index="(item.key as string)" :fixed="item.fixed">
             <template v-if="item.key === 'index'" #cell="{ rowIndex }">
               {{ rowIndex + 1 }}
             </template>
@@ -42,9 +28,7 @@
               </a-avatar>
             </template>
             <template v-else-if="item.key === 'actions'" #cell="{ record }">
-              <a-button status="danger" @click="onDeleteItem(record)" size="mini"
-                >删除</a-button
-              >
+              <a-button status="danger" @click="onDeleteItem(record)" size="mini">删除</a-button>
             </template>
             <template v-else-if="item.key === 'status'" #cell="{ record }">
               <a-tag color="blue" size="small" v-if="record.status === 1">正常</a-tag>
@@ -61,129 +45,129 @@
 </template>
 
 <script lang="ts">
-  import { post } from '@/api/http'
-  import { getTableList } from '@/api/url'
-  import {
-    usePagination,
-    useRowKey,
-    useRowSelection,
-    useTable,
-    useTableColumn,
-    useTableHeight,
-  } from '@/hooks/table'
-  import { Message, Modal } from '@arco-design/web-vue'
-  import { defineComponent, getCurrentInstance, onMounted, ref, watch } from 'vue'
-  export default defineComponent({
-    name: 'UserList',
-    setup() {
-      const table = useTable()
-      const rowKey = useRowKey('id')
-      const pagination = usePagination(doRefresh)
-      const { selectedRowKeys, onSelectionChange } = useRowSelection()
-      const tableColumns = useTableColumn([
-        table.indexColumn,
-        {
-          title: '名称',
-          key: 'nickName',
-          dataIndex: 'nickName',
+import { post } from '@/api/http'
+import { getTableList } from '@/api/url'
+import {
+  usePagination,
+  useRowKey,
+  useRowSelection,
+  useTable,
+  useTableColumn,
+  useTableHeight,
+} from '@/hooks/table'
+import { Message, Modal } from '@arco-design/web-vue'
+import { defineComponent, getCurrentInstance, onMounted, ref, watch } from 'vue'
+export default defineComponent({
+  name: 'UserList',
+  setup() {
+    const table = useTable()
+    const rowKey = useRowKey('id')
+    const pagination = usePagination(doRefresh)
+    const { selectedRowKeys, onSelectionChange } = useRowSelection()
+    const tableColumns = useTableColumn([
+      table.indexColumn,
+      {
+        title: '名称',
+        key: 'nickName',
+        dataIndex: 'nickName',
+      },
+      {
+        title: '性别',
+        key: 'gender',
+        dataIndex: 'gender',
+      },
+      {
+        title: '头像',
+        key: 'avatar',
+        dataIndex: 'avatar',
+      },
+      {
+        title: '地址',
+        key: 'address',
+        dataIndex: 'address',
+      },
+      {
+        title: '登录时间',
+        key: 'lastLoginTime',
+        dataIndex: 'lastLoginTime',
+      },
+      {
+        title: '登录IP',
+        key: 'lastLoginIp',
+        dataIndex: 'lastLoginIp',
+      },
+      {
+        title: '状态',
+        key: 'status',
+        dataIndex: 'status',
+      },
+      {
+        title: '操作',
+        key: 'actions',
+        dataIndex: 'actions',
+      },
+    ])
+    const expandAllFlag = ref(true)
+    function doRefresh() {
+      post({
+        url: getTableList,
+        data: () => {
+          return {
+            page: pagination.page,
+            pageSize: pagination.pageSize,
+          }
         },
-        {
-          title: '性别',
-          key: 'gender',
-          dataIndex: 'gender',
-        },
-        {
-          title: '头像',
-          key: 'avatar',
-          dataIndex: 'avatar',
-        },
-        {
-          title: '地址',
-          key: 'address',
-          dataIndex: 'address',
-        },
-        {
-          title: '登录时间',
-          key: 'lastLoginTime',
-          dataIndex: 'lastLoginTime',
-        },
-        {
-          title: '登录IP',
-          key: 'lastLoginIp',
-          dataIndex: 'lastLoginIp',
-        },
-        {
-          title: '状态',
-          key: 'status',
-          dataIndex: 'status',
-        },
-        {
-          title: '操作',
-          key: 'actions',
-          dataIndex: 'actions',
-        },
-      ])
-      const expandAllFlag = ref(true)
-      function doRefresh() {
-        post({
-          url: getTableList,
-          data: () => {
-            return {
-              page: pagination.page,
-              pageSize: pagination.pageSize,
-            }
-          },
-        })
-          .then((res) => {
-            table.handleSuccess(res)
-            pagination.setTotalSize((res as any).totalSize)
-          })
-          .catch(console.log)
-      }
-      function onDeleteItems() {
-        if (selectedRowKeys.value.length === 0) {
-          Message.error('请选择要删除的数据')
-          return
-        }
-        Modal.confirm({
-          title: '提示',
-          content: '确定要删除此数据吗？',
-          cancelText: '取消',
-          okText: '删除',
-          onOk: () => {
-            Message.success(
-              '数据模拟删除成功，所选择的Keys为：' + JSON.stringify(selectedRowKeys.value)
-            )
-          },
-        })
-      }
-      function onDeleteItem(item: any) {
-        Modal.confirm({
-          title: '提示',
-          content: '确定要删除此数据吗？',
-          cancelText: '取消',
-          okText: '删除',
-          onOk: () => {
-            Message.success('数据删除成功')
-            table.dataList.splice(table.dataList.indexOf(item), 1)
-          },
-        })
-      }
-      onMounted(async () => {
-        table.tableHeight.value = await useTableHeight(getCurrentInstance())
-        doRefresh()
       })
-      return {
-        ...table,
-        rowKey,
-        selectedRowKeys,
-        onSelectionChange,
-        expandAllFlag,
-        tableColumns,
-        pagination,
-        onDeleteItem,
-        onDeleteItems,
+        .then((res) => {
+          table.handleSuccess(res)
+          pagination.setTotalSize((res as any).totalSize)
+        })
+        .catch(console.log)
+    }
+    function onDeleteItems() {
+      if (selectedRowKeys.value.length === 0) {
+        Message.error('请选择要删除的数据')
+        return
       }
-    },
-  })
+      Modal.confirm({
+        title: '提示',
+        content: '确定要删除此数据吗？',
+        cancelText: '取消',
+        okText: '删除',
+        onOk: () => {
+          Message.success(
+            '数据模拟删除成功，所选择的Keys为：' + JSON.stringify(selectedRowKeys.value)
+          )
+        },
+      })
+    }
+    function onDeleteItem(item: any) {
+      Modal.confirm({
+        title: '提示',
+        content: '确定要删除此数据吗？',
+        cancelText: '取消',
+        okText: '删除',
+        onOk: () => {
+          Message.success('数据删除成功')
+          table.dataList.splice(table.dataList.indexOf(item), 1)
+        },
+      })
+    }
+    onMounted(async () => {
+      table.tableHeight.value = await useTableHeight(getCurrentInstance())
+      doRefresh()
+    })
+    return {
+      ...table,
+      rowKey,
+      selectedRowKeys,
+      onSelectionChange,
+      expandAllFlag,
+      tableColumns,
+      pagination,
+      onDeleteItem,
+      onDeleteItems,
+    }
+  },
+})
 </script>

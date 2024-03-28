@@ -33,12 +33,6 @@ export const adminRoutes = [
       },
       {
         parentPath: '/system',
-        menuUrl: '/system/role',
-        menuName: '角色管理',
-        badge: '12',
-      },
-      {
-        parentPath: '/system',
         menuUrl: '/system/menu',
         menuName: '菜单管理',
       },
@@ -54,11 +48,6 @@ export const adminRoutes = [
         parentPath: '/list',
         menuUrl: '/list/table-with-search',
         menuName: '表格搜索',
-      },
-      {
-        parentPath: '/list',
-        menuUrl: '/list/table-custom',
-        menuName: '自定义表格',
       },
     ],
   },
