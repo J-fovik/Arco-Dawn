@@ -14,7 +14,7 @@ export function uuid() {
   const uuid = s.join('')
   return uuid
 }
-
+// 随机
 export function randomString(length: number) {
   const str = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
   let result = ''
@@ -55,7 +55,7 @@ export function sortColumns(originColumns: any[], newColumns: any[]) {
     originColumns.push(...newColumns)
   }
 }
-
+// 获取现在时间
 export function getNowDate() {
   const date = new Date()
   const sign2 = ':'
