@@ -1,12 +1,9 @@
 import { defineStore } from 'pinia'
 import { UserState } from '../types'
 import store from '../pinia'
-
 import Avatar from '@/assets/img_avatar.gif'
 import { nextTick } from 'vue'
-
 const defaultAvatar = Avatar
-
 const useUserStore = defineStore('user-info', {
   state: () => {
     return {
@@ -19,6 +16,7 @@ const useUserStore = defineStore('user-info', {
     }
   },
   actions: {
+    // 保存用户信息
     saveUser(userInfo: UserState) {
       return new Promise<UserState>((resolve) => {
         this.userId = userInfo.userId
@@ -30,12 +28,15 @@ const useUserStore = defineStore('user-info', {
         resolve(userInfo)
       })
     },
+    // 判断是否有token
     isTokenExpire() {
       return !this.token
     },
+    // 改变名字
     changeNickName(newNickName: string) {
       this.nickName = newNickName
     },
+    // 退出登录
     logout() {
       return new Promise<void>((resolve) => {
         this.$reset()

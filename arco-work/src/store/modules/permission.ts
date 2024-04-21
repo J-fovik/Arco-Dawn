@@ -25,6 +25,7 @@ const usePermissionStore = defineStore('permission-route', {
         return it.meta && !it.meta.hidden && it.children && it.children.length > 0
       })
     },
+    // 获取顶部tag数量
     getTopLevelTabs(state) {
       return state.permissionRoutes
         .filter((it) => {
@@ -66,7 +67,7 @@ const usePermissionStore = defineStore('permission-route', {
       const accessRoutes = await this.getRoutes({
         roleId: userStore.roleId,
         userId: userStore.userId,
-      })
+      })      
       const mapRoutes = mapTwoLevelRouter(accessRoutes)
       console.log(mapRoutes);
       

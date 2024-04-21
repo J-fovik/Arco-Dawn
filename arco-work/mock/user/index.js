@@ -3,7 +3,7 @@ import { randomString } from '@/utils'
 import Mock from 'mockjs'
 import { baseData } from '../base.ts'
 import { adminRoutes, editorRoutes } from '../router'
-
+// 使用
 Mock.mock(RegExp(login), 'post', function (options) {
   const username = JSON.parse(options.body).username
   const data = {}
@@ -61,7 +61,7 @@ Mock.mock(RegExp(getAllMenuByRoleId), 'post', function (options) {
   })
   return Mock.mock({ code: 200, data: allRoutes, msg: '获取菜单列表成功' })
 })
-
+// 使用
 Mock.mock(RegExp(getMenuListByRoleId), 'post', function (options) {
   const roleId = JSON.parse(options.body).roleId || ''
   if (!roleId) {

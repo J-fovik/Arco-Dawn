@@ -53,6 +53,8 @@
   const fileList = ref<any>([])
   
   const bindImg = () => {
+    // console.log(props.imageUrl);
+    
     if (props.imageUrl) {
       fileList.value[0] = {
         uid: 1,
@@ -83,6 +85,10 @@
     set(imageUrl, path)
     emit('update:imageUrl', path)
     // notice({ content: '图片上传成功！' })
+    // console.log(imageUrl);
+    // console.log(path);
+
+    
   }
   
   // 上传前

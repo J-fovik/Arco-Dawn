@@ -1,16 +1,20 @@
 <template>
   <div class="action-items-wrapper">
+    <!-- 搜索按钮 -->
     <span v-if="appStore.actionBar.isShowSearch" class="action-item" @click="onShowSearch">
       <SearchIcon />
     </span>
     <a-popover placement="bottom" trigger="click" :width="300">
+      <!-- 消息通知 -->
       <a-badge v-if="appStore.actionBar.isShowMessage" :count="badgeValue" class="action-item">
         <NotificationsIcon />
       </a-badge>
+      <!-- 通知内容 -->
       <template #content>
         <MessageContent />
       </template>
     </a-popover>
+    <!-- 刷新按钮 -->
     <span v-if="appStore.actionBar.isShowRefresh" class="action-item" @click="onRefrehRoute">
       <RefreshIcon />
     </span>
@@ -21,6 +25,7 @@
     >
       <ExpandIcon />
     </span>
+    <!-- 设置按钮 -->
     <span class="action-item" @click="onShowSetting">
       <SettingIcon />
     </span>
@@ -59,10 +64,12 @@
       const router = useRouter()
       const route = useRoute()
       const emitter = useEmit()
+      // 打开全局搜索
       function onShowSearch() {
         emitter?.emit('show-search')
       }
       const { isSupported, enter, isFullscreen, exit } = useFullscreen(document.documentElement)
+      // 全屏
       function onScreenFull() {
         if (!isSupported) {
           Message.error('当前浏览器不支持全屏操作')
@@ -74,12 +81,15 @@
           enter()
         }
       }
+      // 防抖
       const debouncedFn = useDebounceFn(() => {
         router.replace({ path: '/redirect' + route.path, query: route.query })
       }, 200)
+      // 重置
       function onRefrehRoute() {
         debouncedFn()
       }
+      // 打开设置
       function onShowSetting() {
         emitter?.emit('show-setting')
       }

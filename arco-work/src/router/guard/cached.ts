@@ -4,6 +4,7 @@ import router from '..'
 
 function useCachedGuard() {
   router.beforeEach(() => {
+    // 获取缓存路由
     const cachedRouteStore = useCachedRouteStore()
     if (cachedRouteStore.getCachedRouteName.length === 0) {
       cachedRouteStore.initCachedRoute(findCachedRoutes(router.getRoutes()))

@@ -22,6 +22,7 @@ import { onMounted, reactive } from 'vue'
 import draggable from 'vuedraggable'
 import * as Icons from '@arco-design/web-vue/es/icon'
 import { toHump } from '@/utils'
+import { ref } from "vue";
 const tempIcons = Object.keys(Icons).slice(0, 100)
 interface IconItemType {
   label: string
@@ -31,7 +32,7 @@ interface IconItemType {
 
 const iconList = [...tempIcons]
 const list: Array<IconItemType> = reactive([])
-const drag = false
+const drag = ref(false)
 const colors = [
   '#e54d42',
   '#f37b1d',

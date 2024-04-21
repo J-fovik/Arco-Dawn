@@ -16,7 +16,7 @@
     </div>
 </template>
 <script lang="ts" setup>
-import { ref ,reactive} from 'vue';
+import { ref ,reactive,watch} from 'vue';
 import UploadImg from '@/components/UploadImg.vue'
 
 // 上传配置
@@ -44,6 +44,12 @@ const uploadConfig2 = reactive({
 const userInfo = reactive({
     avatar: '',
 })
-
+watch(
+    () => userInfo.avatar,
+    (newVal) => {
+        console.log(newVal);
+        
+    }
+  )
 
 </script>

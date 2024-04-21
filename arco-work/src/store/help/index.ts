@@ -82,7 +82,7 @@ export function filterRoutesFromLocalRoutes(
   }
   return filterRoute
 }
-
+// 是否有子菜单
 export function isMenu(it: OriginRoute) {
   return it.children && it.children.length > 0
 }
@@ -91,7 +91,7 @@ export function getNameByUrl(menuUrl: string) {
   const temp = menuUrl.split('/')
   return toHump(temp[temp.length - 1])
 }
-
+// 获取接口菜单处理成遍历的菜单
 export function generatorRoutes(res: Array<OriginRoute>) {
   const tempRoutes: Array<RouteRecordRaw> = []
   res.forEach((it) => {
@@ -123,9 +123,9 @@ export function generatorRoutes(res: Array<OriginRoute>) {
   })
   return tempRoutes
 }
-
+// 映射网路菜单
 export function mapTwoLevelRouter(srcRoutes: Array<RouteRecordRaw>) {
-  function addParentRoute(routes: any, parent: any, parentPath: string) {
+  function addParentRoute(routes: any, parent: any, parentPath: string) {    
     routes.forEach((it: RouteRecordRaw) => {
       if (!isExternal(it.path)) {
         it.path = resolve(parentPath, it.path)

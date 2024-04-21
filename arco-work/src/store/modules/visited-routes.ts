@@ -3,7 +3,7 @@ import { RouteLocationNormalized } from 'vue-router'
 import pinia from '../pinia'
 import useCachedRouteStore from '@/store/modules/cached-routes'
 import { findCachedRoutes } from '../help'
-
+// 访问过
 const visitedRoutes = JSON.parse(localStorage.getItem('visited-routes') || '[]')
 
 const useVisitedRouteStore = defineStore('visited-routes', {
@@ -14,11 +14,13 @@ const useVisitedRouteStore = defineStore('visited-routes', {
     }
   },
   getters: {
+    // 获取访问过的路由
     getVisitedRoutes(state) {
       return state.visitedRoutes
     },
   },
   actions: {
+    // 初始化获取固定tag路由
     initAffixRoutes(affixRoutes: RouteLocationNormalized[]) {
       affixRoutes.reverse().forEach((affixRoute) => {
         if (!this.visitedRoutes.find((it) => it.fullPath === affixRoute.fullPath)) {
@@ -27,6 +29,7 @@ const useVisitedRouteStore = defineStore('visited-routes', {
       })
       this.isLoadAffix = true
     },
+    // 添加tag路由
     addVisitedRoute(route: RouteLocationNormalized) {
       return new Promise((resolve) => {
         if (!this.visitedRoutes.find((it) => it.fullPath === route.fullPath)) {
@@ -43,6 +46,7 @@ const useVisitedRouteStore = defineStore('visited-routes', {
         resolve(route)
       })
     },
+    // 删除tag路由
     removeVisitedRoute(route: RouteLocationNormalized) {
       return new Promise<string>((resolve) => {
         this.visitedRoutes.splice(this.visitedRoutes.indexOf(route), 1)
@@ -64,6 +68,7 @@ const useVisitedRouteStore = defineStore('visited-routes', {
         ? this.visitedRoutes[this.visitedRoutes.length - 1].fullPath
         : '/'
     },
+    // 关闭左侧tag
     closeLeftVisitedView(selectRoute: RouteLocationNormalized) {
       return new Promise((resolve) => {
         const selectIndex = this.visitedRoutes.indexOf(selectRoute)
@@ -78,6 +83,7 @@ const useVisitedRouteStore = defineStore('visited-routes', {
         resolve(selectRoute)
       })
     },
+    // 关闭右侧tag
     closeRightVisitedView(selectRoute: RouteLocationNormalized) {
       return new Promise((resolve) => {
         const selectIndex = this.visitedRoutes.indexOf(selectRoute)
@@ -92,6 +98,7 @@ const useVisitedRouteStore = defineStore('visited-routes', {
         resolve(selectRoute)
       })
     },
+    // 关闭所有tag
     closeAllVisitedView() {
       return new Promise<void>((resolve) => {
         this.visitedRoutes = this.visitedRoutes.filter((it) => {
@@ -103,6 +110,7 @@ const useVisitedRouteStore = defineStore('visited-routes', {
         resolve()
       })
     },
+    // map方法
     persistentVisitedView() {
       const tempPersistendRoutes = this.visitedRoutes.map((it) => {
         return {
@@ -114,6 +122,7 @@ const useVisitedRouteStore = defineStore('visited-routes', {
       })
       localStorage.setItem(this.$id, JSON.stringify(tempPersistendRoutes))
     },
+    // 刷新
     restoreVisitedView() {
       this.$reset()
     },

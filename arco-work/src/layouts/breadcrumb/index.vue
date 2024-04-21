@@ -72,8 +72,10 @@
         })
         return selectRoutes
       }
+      // 获取面包屑
       function generatorBreadcrumb() {
         breadcrumbs.length = 0
+        // 匹配路由
         const matchedPath = route.matched.map((it) => {
           return {
             label: (it.meta ? it.meta.title || '' : '') as string,
@@ -82,6 +84,7 @@
         })
         breadcrumbs.push(...matchedPath)
       }
+      // 选择跳转
       function handleSelect(key: string) {
         router.push(key)
       }

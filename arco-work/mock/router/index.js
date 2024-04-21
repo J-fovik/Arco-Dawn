@@ -58,26 +58,19 @@ export const adminRoutes = [
     parentPath: '',
     children: [
       {
-        parentPath: '/other',
-        menuUrl: '/other/chart',
-        menuName: '图表',
-        children: [
-          {
-            parentPath: '/other/chart',
-            menuUrl: '/other/chart/icons',
-            menuName: '图标',
-          },
-          {
-            parentPath: '/other/chart',
-            menuUrl: '/other/chart/echarts',
-            menuName: 'echarts',
-          },
-          {
-            parentPath: '/other/chart',
-            menuUrl: '/other/chart/icon-select',
-            menuName: '图标选择器',
-          },
-        ],
+        parentPath: '/other/chart',
+        menuUrl: '/other/icons',
+        menuName: '图标',
+      },
+      {
+        parentPath: '/other/chart',
+        menuUrl: '/other/echarts',
+        menuName: 'echarts',
+      },
+      {
+        parentPath: '/other/chart',
+        menuUrl: '/other/icon-select',
+        menuName: '图标选择器',
       },
       {
         parentPath: '/other',

@@ -312,6 +312,7 @@
       function openDrawer() {
         opened.value = true
       }
+      // 主题设置切换
       function themeClick(item: any) {
         themeList.forEach((it) => {
           it.checked = it === item
@@ -321,6 +322,7 @@
         }
         appStore.changeTheme(item.themeId)
       }
+      // 侧边栏样式切换
       function exampleClick(item: any) {
         if (appStore.theme === ThemeMode.DARK) {
           Message.error('深色模式下不能更改侧边栏颜色')
@@ -331,12 +333,14 @@
         })
         appStore.changeSideBarTheme(item.themeId)
       }
+      // 布局模式切换
       function layoutExampleClick(item: any) {
         layoutExampleList.forEach((it) => {
           it.checked = it === item
         })
         appStore.changeLayoutMode(item.layoutId)
       }
+      // 颜色切换
       function colorClick(item: any) {
         primartyColorList.forEach((it) => {
           it.checked = it === item
@@ -349,6 +353,7 @@
       function openAppInfo() {
         appInfoDialog.value?.toggle()
       }
+      // 页面切换动画
       function onAnimUpdate(val: any) {
         appStore.changePageAnim(val)
       }
