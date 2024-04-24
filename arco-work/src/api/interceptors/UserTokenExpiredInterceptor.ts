@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios'
 import { Message } from '@arco-design/web-vue'
-
+// 登录过期
 export default function (response: AxiosResponse): AxiosResponse {
   if (response.status === 400) {
     Message.error('当前用户登录已过期，请重新登录')

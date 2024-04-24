@@ -1,3 +1,4 @@
+// 页面灰度效果
 export default function useGray(isGray: boolean) {
   const html = document.querySelector('html') as HTMLHtmlElement
   const style = html.style

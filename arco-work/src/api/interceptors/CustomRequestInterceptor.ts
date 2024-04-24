@@ -1,6 +1,6 @@
 import { useUserStoreContext } from '@/store/modules/user'
 import { AxiosRequestConfig } from 'axios'
-
+// 请求头带token
 export default async function (config: AxiosRequestConfig) {
   const useStore = await useUserStoreContext()
   if (config) {
