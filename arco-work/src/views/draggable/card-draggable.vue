@@ -5,7 +5,6 @@
         <a-button size="small" type="primary" @click="resetElements">重置元素位置</a-button>
       </template>
       <draggable :list="list" animation="500" @start="drag = true" @end="drag = false" item-key="id" tag="ul">
-
         <template #item="{ element }">
           <li class="card-item">
             <component :is="element.id" class="icon" :style="{ color: element.color }" />

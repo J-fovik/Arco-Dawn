@@ -30,7 +30,7 @@
                 {{ record.gender === 1 ? '男' : '女' }}
               </template>
               <template v-else-if="item.key === 'avatar'" #cell="{ record }">
-                <a-avatar :src="record.avatar"> </a-avatar>
+                <a-avatar :src="record.avatar" />
               </template>
               <template v-else-if="item.key === 'status'" #cell="{ record }">
                 <a-tag color="blue" size="small" v-if="record.status === 1">正常</a-tag>
@@ -107,6 +107,7 @@
           Message.error('请选择要导出的行')
           return
         }
+        // table.dataList为数据列表
         const data = selectedRowKeys.value
           .map((it: any) => {
             return table.dataList.find((item: any) => item.id === it)

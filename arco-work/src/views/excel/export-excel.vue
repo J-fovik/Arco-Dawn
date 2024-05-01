@@ -91,6 +91,8 @@
       }
       function exportExcel() {
         const workSheet = XLSX.utils.table_to_sheet((tableRef.value as any).$el)
+        console.log(workSheet)
+
         const workBook = XLSX.utils.book_new()
         XLSX.utils.book_append_sheet(workBook, workSheet, '数据报表')
         XLSX.writeFile(workBook, 'tale-list.xlsx')

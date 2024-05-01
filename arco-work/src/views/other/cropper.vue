@@ -4,7 +4,7 @@
       <img :src="ImagePath" class="test-img" />
       <a-button type="primary" size="small" @click="onCropper">裁剪图片</a-button>
     </div>
-    <a-modal v-model:visible="showModal" title="图片裁剪" @ok="showModal = false" >
+    <a-modal v-model:visible="showModal" title="图片裁剪" @ok="showModal = false">
       <div class="flex text-center justify-between">
         <div class="w-1/2">
           <img id="cropperImg" :src="ImagePath" class="cropper-img" />
