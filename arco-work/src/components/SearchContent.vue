@@ -87,7 +87,6 @@
       }
       const router = useRouter()
       function onSelectItem(value: any) {
-        console.log(value)
         const items = value.split(':')
         router.push(items[1]).then(() => {
           visible.value = false

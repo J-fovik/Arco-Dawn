@@ -17,7 +17,7 @@ export interface Response<T = any> {
   msg: string
   data: T
 }
-
+// 只在permission里使用，其他请求都用的hook里面的二次封装
 function http<T = any>({ url, data, method, headers, beforeRequest, afterRequest }: HttpOption) {
   const successHandler = (res: AxiosResponse<Response<T>>) => {
     if (res.data.code === 200) {

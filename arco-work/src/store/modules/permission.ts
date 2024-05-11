@@ -48,8 +48,8 @@ const usePermissionStore = defineStore('permission-route', {
             // 这样可以增加安全性
             data,
           })
-          console.log(baseAddress + getMenuListByRoleId,res,'菜单');
-          
+          console.log(baseAddress + getMenuListByRoleId, res, '菜单');
+
           return generatorRoutes(res.data)
         } else {
           return generatorRoutes(defaultRoutes)
@@ -67,10 +67,10 @@ const usePermissionStore = defineStore('permission-route', {
       const accessRoutes = await this.getRoutes({
         roleId: userStore.roleId,
         userId: userStore.userId,
-      })      
+      })
       const mapRoutes = mapTwoLevelRouter(accessRoutes)
       console.log(mapRoutes);
-      
+
       mapRoutes.forEach((it: any) => {
         router.addRoute(it)
       })

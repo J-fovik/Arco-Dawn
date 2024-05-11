@@ -17,7 +17,6 @@ declare module 'vue' {
     ACheckboxGroup: typeof import('@arco-design/web-vue')['CheckboxGroup']
     ACol: typeof import('@arco-design/web-vue')['Col']
     ADatePicker: typeof import('@arco-design/web-vue')['DatePicker']
-    AddButton: typeof import('./src/components/AddButton.vue')['default']
     ADescriptions: typeof import('@arco-design/web-vue')['Descriptions']
     ADivider: typeof import('@arco-design/web-vue')['Divider']
     ADoption: typeof import('@arco-design/web-vue')['Doption']
@@ -73,12 +72,8 @@ declare module 'vue' {
     RichTextEditor: typeof import('./src/components/RichTextEditor.vue')['default']
     Scrollbar: typeof import('./src/components/Scrollbar/src/Scrollbar.vue')['default']
     SearchContent: typeof import('./src/components/SearchContent.vue')['default']
-    SortableTable: typeof import('./src/components/SortableTable.vue')['default']
-    TableBody: typeof import('./src/components/TableBody.vue')['default']
-    TableConfig: typeof import('./src/components/TableConfig.vue')['default']
-    TableFooter: typeof import('./src/components/TableFooter.vue')['default']
     TableHeader: typeof import('./src/components/TableHeader.vue')['default']
+    CustomTable: typeof import('./src/components/CustomTable.vue')['default']
+    AddButton: typeof import('./src/components/AddButton.vue')['default']
   }
 }
-
-export { }

@@ -6,15 +6,7 @@ export interface HeaderCellStyle {
   color: string
 }
 
-export interface TableConfig {
-  dataList: Array<any>
-  stripe: boolean
-  border: boolean
-  size: string
-  headerCellStyle: HeaderCellStyle
-  height: string | number
-  tableLoading: boolean
-}
+
 
 export interface SelectOptionItem {
   label: string
@@ -69,6 +61,4 @@ export type TableHeaderType = InstanceType<
   typeof import('../components/common/TableHeader.vue').default
 >
 
-export type TableFooterType = InstanceType<
-  typeof import('../components/common/TableFooter.vue').default
->
+

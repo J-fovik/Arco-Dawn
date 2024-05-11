@@ -1,10 +1,9 @@
-import { getMenuListByRoleId, getAllMenuByRoleId, login, updateUserInfo } from '@/api/url'
 import { randomString } from '@/utils'
 import Mock from 'mockjs'
 import { baseData } from '../base.ts'
 import { adminRoutes, editorRoutes } from '../router'
 // 使用
-Mock.mock(RegExp(login), 'post', function (options) {
+Mock.mock(RegExp('/login'), 'post', function (options) {
   const username = JSON.parse(options.body).username
   const data = {}
   if (username === 'admin') {
@@ -47,22 +46,8 @@ Mock.mock(RegExp(login), 'post', function (options) {
   return Mock.mock(baseData)
 })
 
-Mock.mock(RegExp(getAllMenuByRoleId), 'post', function (options) {
-  const roleId = JSON.parse(options.body).roleId || ''
-  if (!roleId) {
-    return Mock.mock({ code: 500, data: '', msg: '获取菜单列表失败' })
-  }
-  const allRoutes = [...adminRoutes]
-  allRoutes.forEach((it) => {
-    it.isSelect = parseInt(roleId) === 1 || it.menuUrl.indexOf('authority') === -1
-    it.children.forEach((child) => {
-      child.isSelect = parseInt(roleId) === 1 || child.menuUrl.indexOf('authority') === -1
-    })
-  })
-  return Mock.mock({ code: 200, data: allRoutes, msg: '获取菜单列表成功' })
-})
 // 使用
-Mock.mock(RegExp(getMenuListByRoleId), 'post', function (options) {
+Mock.mock(RegExp('/getMenusByRoleId'), 'post', function (options) {
   const roleId = JSON.parse(options.body).roleId || ''
   if (!roleId) {
     return Mock.mock({ code: 500, data: '', msg: '获取菜单列表失败' })
@@ -84,8 +69,4 @@ Mock.mock(RegExp(getMenuListByRoleId), 'post', function (options) {
       msg: '目前仅支持超级管理员和编辑人员菜单',
     })
   }
-})
-
-Mock.mock(RegExp(updateUserInfo), 'post', function () {
-  return Mock.mock({ ...baseData, msg: '更新信息成功' })
 })

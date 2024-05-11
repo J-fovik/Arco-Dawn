@@ -1,4 +1,3 @@
-import { getMenuList } from '@/api/url'
 import Mock from 'mockjs'
 
 export const adminRoutes = [
@@ -18,27 +17,6 @@ export const adminRoutes = [
     ],
   },
   {
-    menuUrl: '/system',
-    menuName: '系统管理',
-    icon: 'icon-settings',
-    parentPath: '',
-    routeName: 'system',
-    children: [
-      {
-        parentPath: '/system',
-        menuUrl: '/system/user',
-        menuName: '用户管理',
-        badge: 'dot',
-        routeName: 'user',
-      },
-      {
-        parentPath: '/system',
-        menuUrl: '/system/menu',
-        menuName: '菜单管理',
-      },
-    ],
-  },
-  {
     menuUrl: '/list',
     menuName: '表格demo',
     icon: 'icon-list',
@@ -46,8 +24,8 @@ export const adminRoutes = [
     children: [
       {
         parentPath: '/list',
-        menuUrl: '/list/table-with-search',
-        menuName: '表格搜索',
+        menuUrl: '/list/table-demo',
+        menuName: '自定义表格',
       },
     ],
   },
@@ -153,24 +131,6 @@ export const adminRoutes = [
         parentPath: '/editor',
         menuUrl: '/editor/rich-text',
         menuName: '富文本',
-      },
-    ],
-  },
-  {
-    menuUrl: '/excel',
-    menuName: 'Excel',
-    icon: 'icon-nav',
-    parentPath: '',
-    children: [
-      {
-        parentPath: '/excel',
-        menuUrl: '/excel/export-excel',
-        menuName: '导出Excel',
-      },
-      {
-        parentPath: '/excel',
-        menuUrl: '/excel/export-rows-excel',
-        menuName: '导出选中行',
       },
     ],
   },
@@ -361,6 +321,6 @@ export const editorRoutes = [
   },
 ]
 
-Mock.mock(RegExp(getMenuList), 'post', function () {
-  return Mock.mock({ code: 200, data: adminRoutes, msg: '获取菜单列表成功' })
+Mock.mock(RegExp('/getMenuList'), 'post', function () {
+  return Mock.mock({ code: 200, totalCount: 1000, data: adminRoutes, msg: '获取菜单列表成功' })
 })
