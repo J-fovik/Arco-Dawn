@@ -1,5 +1,5 @@
 <template>
-  <div class="fullHeihgt">
+  <div class="fullHeight">
     <a-card style="height: 100%;">
       <CenterTitle />
     </a-card>
