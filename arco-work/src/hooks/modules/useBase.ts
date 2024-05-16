@@ -21,7 +21,7 @@ export const useBasicsState = <T>(
 	// 暴露API
 	return [basicsState, setBasicsState];
 };
-
+// new Set
 export const useBasicsSet = (defaultValue: Array<string> = []) => {
 	const basicsSet = ref<Set<string>>(new Set(defaultValue));
 	// 检查是否存在某个值
@@ -43,9 +43,13 @@ export const useBasicsSet = (defaultValue: Array<string> = []) => {
 	// 暴露API
 	return { basicsSet, hasValue, addValue, deleteValue, clearValue };
 };
-
+// new Map
 export const useBasicsMap = <T = AnyObject>(defaultValue = []) => {
 	const basicsMap = ref<Map<string, T>>(new Map(defaultValue));
+	// 判断成员总数
+	const sizeValue = () => {
+		return basicsMap.value.size;
+	};
 	// 检查是否存在某个值
 	const hasValue = (key: string) => {
 		return basicsMap.value.has(key);
@@ -75,5 +79,5 @@ export const useBasicsMap = <T = AnyObject>(defaultValue = []) => {
 		basicsMap.value.clear();
 	};
 	// 暴露API
-	return { basicsMap, getValue, hasValue, setValue, addValue, deleteValue, clearValue };
+	return { basicsMap, sizeValue, getValue, hasValue, setValue, addValue, deleteValue, clearValue };
 };
