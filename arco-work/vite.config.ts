@@ -5,8 +5,8 @@ import { defineConfig } from 'vite'
 import dotenv from 'dotenv'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 // 在正式打包的时候，可以把这两行代码放开
-// import Components from 'unplugin-vue-components/vite'
-// import { ArcoResolver } from 'unplugin-vue-components/resolvers'
+import Components from 'unplugin-vue-components/vite'
+import { ArcoResolver } from 'unplugin-vue-components/resolvers'
 
 export default defineConfig(({ mode }) => {
   const dotenvConfig = dotenv.config({ path: `./.env.${mode}` })
@@ -32,10 +32,18 @@ export default defineConfig(({ mode }) => {
         symbolId: 'icon-[dir]-[name]',
       }),
       vueJsx(),
-      // 在正式打包的时候，可以把这三行代码放开
+      // // 在正式打包的时候，可以把这三行代码放开
       // Components({
       //   resolvers: [ArcoResolver()],
       // }),
+      Components({
+        // 指定组件位置，默认是 src/components 自动导入自定义组件
+        dirs: ['src/components'],
+        extensions: ['vue', 'tsx'],
+        // 配置文件生成位置
+        dts: 'src/components.d.ts',
+        resolvers: [ArcoResolver()],
+      }),
     ],
     css: {
       preprocessorOptions: {

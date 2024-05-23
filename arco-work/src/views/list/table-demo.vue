@@ -1,5 +1,5 @@
 <template>
-    <div class="main-container">
+    <div>
         <CustomTable fold :table-columns="columnsData" :table-size="tableBaseOptions.size" @reset-search="resetForm"
             @search="resetData" @change-table-size="changeTableSize" @change-table-column="changeTableColumn">
             <template #form="{ collapsed }">
