@@ -9,10 +9,9 @@
 </template>
 
 <script lang="ts" setup name='Clipboard'>
-import { defineComponent, ref } from 'vue'
+import { ref } from 'vue'
 import { useClipboard } from '@vueuse/core'
 import { Message } from '@arco-design/web-vue'
-
 const content = ref('')
 const { copy, isSupported, text } = useClipboard({ source: content })
 const onCopy = () => {
@@ -27,6 +26,4 @@ const onCopy = () => {
 if (!isSupported) {
   Message.error('当前浏览器不支持此功能')
 }
-
-
 </script>

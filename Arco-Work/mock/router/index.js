@@ -165,76 +165,46 @@ export const adminRoutes = [
       },
     ],
   },
-  {
-    menuUrl: '/project',
-    menuName: '项目信息',
-    icon: 'icon-mind-mapping',
-    isSingle: true,
-    children: [
-      {
-        parentPath: '/project',
-        menuUrl: '/project/infomation',
-        menuName: '项目依赖',
-      },
-    ],
-  },
 ]
 export const editorRoutes = [
   {
-    menuUrl: '/other',
-    menuName: '功能/组件',
-    iconPrefix: 'iconfont',
-    icon: 'appstore',
+    menuUrl: '/index',
+    menuName: 'Dashborad',
+    routeName: 'dashborad',
+    icon: 'icon-dashboard',
     parentPath: '',
     children: [
       {
-        parentPath: '/other',
-        menuUrl: '/other/chart',
-        menuName: '图表',
-        children: [
-          {
-            parentPath: '/other/chart',
-            menuUrl: '/other/chart/icon',
-            menuName: '图标',
-            children: [
-              {
-                parentPath: '/other/chart/icon',
-                menuUrl: '/other/chart/icon/icon-font',
-                menuName: 'IconFont',
-              },
-              {
-                parentPath: '/other/chart/icon',
-                menuUrl: '/other/chart/icon/xicons',
-                menuName: 'xicons',
-              },
-            ],
-          },
-          {
-            parentPath: '/other/chart',
-            menuUrl: '/other/chart/echarts',
-            menuName: 'echarts',
-          },
-          {
-            parentPath: '/other/chart',
-            menuUrl: '/other/chart/icon-selector',
-            menuName: '图标选择器',
-          },
-        ],
+        parentPath: '/index',
+        menuUrl: '/index/home',
+        menuName: '主控台',
+        routeName: 'home',
       },
+    ],
+  },
+  {
+    menuUrl: '/list',
+    menuName: '表格demo',
+    icon: 'icon-list',
+    parentPath: '',
+    children: [
       {
-        parentPath: '/other',
-        menuUrl: '/other/print',
-        menuName: '打印',
+        parentPath: '/list',
+        menuUrl: '/list/table-demo',
+        menuName: '自定义表格',
       },
+    ],
+  },
+  {
+    menuUrl: '/other',
+    menuName: '功能/组件',
+    icon: 'icon-apps',
+    parentPath: '',
+    children: [
       {
-        parentPath: '/other',
-        menuUrl: '/other/badge',
-        menuName: '消息提示',
-      },
-      {
-        parentPath: '/other',
-        menuUrl: '/other/clipboard',
-        menuName: '剪贴板',
+        parentPath: '/other/chart',
+        menuUrl: '/other/icons',
+        menuName: '图标',
       },
       {
         parentPath: '/other',
@@ -248,51 +218,47 @@ export const editorRoutes = [
       },
       {
         parentPath: '/other',
-        menuUrl: '/other/css-animation',
-        menuName: 'CSS动画',
-      },
-      {
-        parentPath: '/other',
         menuUrl: '/other/flow',
         menuName: '流程图',
       },
+    ],
+  },
+  {
+    menuUrl: '/route-params',
+    menuName: '路由参数',
+    icon: 'icon-file',
+    parentPath: '',
+    children: [
       {
-        parentPath: '/other',
-        menuUrl: '/other/player',
-        menuName: '视频播放器',
+        parentPath: '/route-params',
+        menuUrl: '/route-params/query',
+        menuName: 'query参数',
       },
       {
-        parentPath: '/other',
-        menuUrl: '/other/password-strong',
-        menuName: '密码强度',
+        parentPath: '/route-params',
+        menuUrl: '/route-params/params',
+        menuName: 'params参数',
       },
+    ],
+  },
+  {
+    menuUrl: '/draggable',
+    menuName: '拖拽',
+    icon: 'icon-drag-arrow',
+    parentPath: '',
+    children: [
       {
-        parentPath: '/other',
-        menuUrl: '/other/cropper',
-        menuName: '图片裁剪',
-      },
-      {
-        parentPath: '/other',
-        menuUrl: '/other/iframe',
-        menuName: '内嵌iframe',
-      },
-      {
-        parentPath: '/other',
-        menuUrl: '/other/big-preview',
-        menuName: '大图预览',
-      },
-      {
-        parentPath: '/other',
-        menuUrl: '/other/city-selector',
-        menuName: '省市区选择器',
+        parentPath: '/draggable',
+        menuUrl: '/draggable/card-draggable',
+        menuName: '卡片拖拽',
+        cacheable: true,
       },
     ],
   },
   {
     menuUrl: '/map',
     menuName: '地图',
-    iconPrefix: 'iconfont',
-    icon: 'location',
+    icon: 'icon-location',
     children: [
       {
         parentPath: '/map',
@@ -303,19 +269,6 @@ export const editorRoutes = [
         parentPath: '/map',
         menuUrl: '/map/baidu',
         menuName: '百度地图',
-      },
-    ],
-  },
-  {
-    menuUrl: '/project',
-    menuName: '项目信息',
-    iconPrefix: 'iconfont',
-    icon: 'detail',
-    children: [
-      {
-        parentPath: '/project',
-        menuUrl: '/project/infomation',
-        menuName: '项目依赖',
       },
     ],
   },

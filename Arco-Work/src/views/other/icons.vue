@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts" name='Icons' setup>
-import { defineComponent, reactive, ref } from 'vue'
+import { reactive, ref } from 'vue'
 import * as AllIcons from '@arco-design/web-vue/es/icon'
 import { useClipboard } from '@vueuse/core'
 import { Message } from '@arco-design/web-vue'
@@ -24,6 +24,7 @@ import { Message } from '@arco-design/web-vue'
 const loading = ref(false)
 const iconArray = Object.keys(AllIcons)
 const { copy, isSupported } = useClipboard()
+// 复制
 const onCopy = (item: string) => {
   if (!isSupported) {
     Message.error('当前浏览器不支持此功能')
@@ -36,7 +37,9 @@ const onCopy = (item: string) => {
 let index = 0
 const size = 50
 const tempIcon = reactive([] as string[])
+// 初始化截取图标
 tempIcon.push(...iconArray.slice(index, size))
+// 点击加载更多
 function onLoadMore() {
   if (tempIcon.length >= iconArray.length) {
     Message.success('没有更多了')
@@ -45,6 +48,7 @@ function onLoadMore() {
   index++
   tempIcon.push(...iconArray.slice(index * size, index * size + size))
 }
+// 图标标签格式化
 function getCopyContent(item: string) {
   return `<${item}/>`
 }
