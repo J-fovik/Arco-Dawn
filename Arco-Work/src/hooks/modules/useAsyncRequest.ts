@@ -23,7 +23,29 @@ export const useAsyncData = <T = Array<any>>(api: () => Promise<any>, defaultVal
 	// 暴露API
 	return { data, loading, initData };
 };
-
+// 异步处理结果（不初始化）
+export const useAsyncNoInitData = <T = Array<any>>(
+	api: () => Promise<any>,
+	defaultValue = [] as T
+) => {
+	// 加载状态
+	const [loading, setLoading] = useBasicsState(true);
+	// 结果
+	const data = ref<T>(defaultValue);
+	// 刷新数据
+	const initData = () => {
+		if (loading.value === false) setLoading(true);
+		api()
+			.then((response) => {
+				data.value = response;
+			})
+			.finally(() => {
+				setLoading(false);
+			});
+	};
+	// 暴露API
+	return { data, loading, initData };
+};
 // 异步结果处理
 export const useAsyncShallowData = <T = Array<any>>(
 	api: () => Promise<any>,

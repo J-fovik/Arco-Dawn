@@ -195,8 +195,8 @@
             status: 0, // 0未完成，1已完成
           },
         ],
-        avatar: userStore.avatar,
-        nickName: userStore.nickName,
+        avatar: userStore.userInfo.avatar,
+        nickName: userStore.userInfo.nickName,
         avatarTouchStart,
         uploadAvatar,
       }

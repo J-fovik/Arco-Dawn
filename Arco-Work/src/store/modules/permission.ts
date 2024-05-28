@@ -65,8 +65,8 @@ const usePermissionStore = defineStore('permission-route', {
       const userStore = useUserStore()
       // 加载路由
       const accessRoutes = await this.getRoutes({
-        roleId: userStore.roleId,
-        userId: userStore.userId,
+        roleId: userStore.userInfo.roleId,
+        userId: userStore.userInfo.userId,
       })
       const mapRoutes = mapTwoLevelRouter(accessRoutes)
       console.log(mapRoutes);

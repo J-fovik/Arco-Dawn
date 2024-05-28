@@ -7,24 +7,19 @@ const defaultAvatar = Avatar
 const useUserStore = defineStore('user-info', {
   state: () => {
     return {
-      userId: 0,
-      roleId: 0,
+      userInfo: {} as any,
       token: '',
-      userName: '',
-      nickName: '',
-      avatar: defaultAvatar,
     }
   },
   actions: {
     // 保存用户信息
     saveUser(userInfo: UserState) {
       return new Promise<UserState>((resolve) => {
-        this.userId = userInfo.userId
-        this.roleId = userInfo.roleId
+        this.userInfo = {
+          ...userInfo,
+          avatar: userInfo.avatar || defaultAvatar
+        }
         this.token = userInfo.token
-        this.userName = userInfo.userName
-        this.nickName = userInfo.nickName
-        this.avatar = userInfo.avatar || defaultAvatar
         resolve(userInfo)
       })
     },
@@ -34,7 +29,7 @@ const useUserStore = defineStore('user-info', {
     },
     // 改变名字
     changeNickName(newNickName: string) {
-      this.nickName = newNickName
+      this.userInfo.nickName = newNickName
     },
     // 退出登录
     logout() {
@@ -49,14 +44,10 @@ const useUserStore = defineStore('user-info', {
   presist: {
     enable: true,
     resetToState: true,
-    option: {
-      exclude: ['userName'],
-    },
+
   },
 })
-
 export default useUserStore
-
 /**
  * 返回一个Promise对象，目的是防止在非vue组件使用中的时候出现插件还没有出初始化完成导致持久化操作失败的bug。
  * 使用方式：

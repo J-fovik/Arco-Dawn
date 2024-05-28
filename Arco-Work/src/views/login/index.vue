@@ -44,36 +44,28 @@
     <div class="bottom">{{
             'Vue3 + Vite + Typescript + Arco Design © ' +
             projectName +
-            ' ' +
-            version +
-            ' · Made by qingqingxuan'
+            ' '
           }}</div>
   </div>
 </template>
 
 <script lang="ts" name='Login' setup>
-import { defineComponent, ref } from 'vue'
+import { ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import ImageBg1 from '@/assets/img_login_bg_01.png'
-import logo from '@/assets/logo.png'
-import { post, Response } from '@/api/http'
-import { login } from '@/api/url'
 import { Message } from '@arco-design/web-vue'
+import { login } from '@/api/url'
 import { UserState } from '@/store/types'
-import setting from '../../setting'
-import useAppInfo from '@/hooks/useAppInfo'
+import { projectName } from '@/setting'
 import useUserStore from '@/store/modules/user'
 import { curryingRequest, useBasicsState } from '@/hooks';
 const [activeKey, setActiveKey] = useBasicsState<string | null>(null);
-const projectName = setting.projectName
-const { version } = useAppInfo()
 const username = ref('admin')
 const password = ref('123456')
 const autoLogin = ref(true)
-const loading = ref(false)
 const router = useRouter()
 const route = useRoute()
 const userStore = useUserStore()
+// 登录
 const onLogin = async () => {
   // 发起请求
   const { res, err } = await curryingRequest(
@@ -88,6 +80,7 @@ const onLogin = async () => {
     }
   );
   if (err) return
+  console.log('login接口', res);
   userStore.saveUser(res?.data.data as UserState).then(() => {
     router
       .replace({
@@ -98,7 +91,6 @@ const onLogin = async () => {
       })
   })
 }
-
 </script>
 
 <style lang="less" scoped>

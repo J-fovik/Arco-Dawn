@@ -1,6 +1,5 @@
 import request, { baseURL } from './axios.config'
 export const baseAddress = baseURL
-
 export const getMenuList = (data?: object) => {
 	return request({
 		url: '/getMenuList',
@@ -23,8 +22,3 @@ export const login = (data?: object) => {
 	});
 }
 export const getMenuListByRoleId = '/getMenusByRoleId'
-declare module 'vue' {
-	interface ComponentCustomProperties {
-		$urlPath: Record<string, string>
-	}
-}

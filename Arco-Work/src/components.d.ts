@@ -51,6 +51,7 @@ declare module 'vue' {
     ATable: typeof import('@arco-design/web-vue')['Table']
     ATabPane: typeof import('@arco-design/web-vue')['TabPane']
     ATabs: typeof import('@arco-design/web-vue')['Tabs']
+    ATag: typeof import('@arco-design/web-vue')['Tag']
     ATooltip: typeof import('@arco-design/web-vue')['Tooltip']
     ATreeSelect: typeof import('@arco-design/web-vue')['TreeSelect']
     ATrigger: typeof import('@arco-design/web-vue')['Trigger']
