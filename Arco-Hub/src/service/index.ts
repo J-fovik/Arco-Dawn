@@ -2,6 +2,7 @@ import type { HttpResponse, HttpError } from './request';
 import { Message } from '@arco-design/web-vue';
 export { default as USER_APIS } from './modules/user';
 export { default as SYSTEM_APIS } from './modules/system';
+export { default as PUBLIC_APIS } from './modules/public';
 
 // 二次封装请求
 const curryingRequest = async <T = any>(

@@ -35,24 +35,35 @@ interface AppState {
 	appName: string;
 	navbarHeight: number;
 	unreadMessage: number;
-	[key: string]: unknown;
 }
 
 interface UserState {
-	loginName?: string;
-	nickName?: string;
-	phoneNumber?: string;
-	dedicatedCode?: string;
-	roleCode?: string;
-	roleId?: string;
-	token?: string;
+	username?: string;
+	userLevel?: string;
+	userId?: string;
+	userAccount?: string;
 	updateUser?: string;
-	userName?: string;
-	bz?: string;
-	createTime?: string;
+	updateTime?: string;
+	token?: string;
+	state?: string;
+	roleCode?: string;
+	mobile?: string;
+	email?: string;
+	departType?: string;
+	departName?: string;
+	departCode?: string;
+	delFlag?: string;
 	createUser?: string;
-	id?: string;
-	isCancel?: string;
-	isDelete?: string;
-	roleList?: Array<string>;
+	createTime?: string;
+	certType?: string;
+	cardId?: string;
+	address?: string;
+	roleList?: Array<any>;
+	menuList?: Array<any>;
+	zjzhh?: string;
+	zjzhm?: string;
+	quota?: number;
+	totalRechargeAmountAll?: number;
+	quotaAll?: number;
+	retentionMoneyAll?: number;
 }

@@ -31,7 +31,7 @@
 	</a-modal>
 </template>
 
-<script lang="ts" setup name="ZsAddUser">
+<script lang="ts" setup name="ZsEditPassword">
 import { useForm } from '@/hooks';
 // form
 const { form, formRef } = useForm(() => ({
@@ -63,6 +63,7 @@ const emits = defineEmits(['handleCancel']);
 const submitData = () => {
 	formRef.value.validate((errors: any) => {
 		if (!errors) return;
+		console.log('验证成功！');
 	});
 };
 </script>

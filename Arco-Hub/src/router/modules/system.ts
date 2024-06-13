@@ -9,22 +9,42 @@ export default {
 	},
 	children: [
 		{
-			path: 'roleManage',
-			name: 'SystemRoleManage',
+			path: 'userManage',
+			name: 'SystemUserManage',
 			meta: {
 				requiresAuth: true,
-				title: '角色管理',
+				title: '用户管理',
 			},
-			component: () => import('@/views/system/roleManage/index.vue'),
+			component: () => import('@/views/system/userManage/index.vue'),
 		},
 		{
-			path: 'userSetting',
-			name: 'SystemUserSetting',
+			path: 'userManage/operate',
+			name: 'SystemUserOperate',
 			meta: {
 				requiresAuth: true,
-				title: '个人信息',
+				title: '用户维护',
+				superiorName: 'SystemUserManage',
 			},
-			component: () => import('@/views/system/userSetting/index.vue'),
+			component: () => import('@/views/system/userManage/operate/index.vue'),
+		},
+		{
+			path: 'dictionaryManage',
+			name: 'SystemDictionaryManage',
+			meta: {
+				requiresAuth: true,
+				title: '字典管理',
+			},
+			component: () => import('@/views/system/dictionaryManage/index.vue'),
+		},
+		{
+			path: 'dictionaryManage/operate',
+			name: 'SystemDictionaryOperate',
+			meta: {
+				requiresAuth: true,
+				title: '字典管理维护',
+				superiorName: 'SystemDictionaryManage',
+			},
+			component: () => import('@/views/system/dictionaryManage/operate/index.vue'),
 		},
 	],
 };

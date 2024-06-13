@@ -45,11 +45,19 @@
   > .@{input-prefix-cls}-outer:not(:last-child),
   > .@{prefix}-input-tag:not(:last-child),
   > .@{prefix}-select-view:not(:last-child) {
+    margin-right: -@input-group-border-separator-width;
     border-right: @input-group-border-separator-width solid
       @input-group-color-separator-border;
 
     &:focus-within {
       border-right-color: @input-color-border_focus;
+    }
+  }
+
+  // 针对Error状态的input边框颜色处理
+  > .@{input-prefix-cls}-wrapper.@{input-prefix-cls}-error:not(:last-child) {
+    &:focus-within {
+      border-right-color: @input-color-border_error_focus;
     }
   }
 }

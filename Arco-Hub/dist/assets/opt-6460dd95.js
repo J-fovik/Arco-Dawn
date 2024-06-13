@@ -1,1 +1,0 @@
-import{m as e}from"./index-d007178a.js";import{V as s}from"./vip-3bf0329d.js";const p=async()=>{let r=[];const{res:t,err:a}=await e(()=>s.getCardVipType({}));return a?[]:(r=t==null?void 0:t.data,r)};export{p as g};

@@ -1,4 +1,3 @@
-import { reactive } from 'vue';
 import { defineStore } from 'pinia';
 import defaultSettings from '@/config/settings';
 

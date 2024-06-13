@@ -684,6 +684,10 @@
       border-right: @table-border-width @table-border-style @table-color-border;
       border-bottom: @table-border-width @table-border-style @table-color-border;
     }
+    .@{table-cls-th}-resizing,
+    .@{table-cls-td}-resizing:not(.@{table-prefix-cls}-tr-expand) {
+      border-right-color: @table-color-border_resizing;
+    }
   }
 
   &-border&-border-header-cell {
@@ -848,5 +852,11 @@
   &-top {
     margin-top: 0;
     margin-bottom: @table-spacing-pagination-margin;
+  }
+}
+
+.@{prefix}-virtual-list {
+  & > .@{table-prefix-cls}-element {
+    width: auto;
   }
 }

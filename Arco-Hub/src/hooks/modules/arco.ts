@@ -1,6 +1,5 @@
 import type { TableColumnData } from '@arco-design/web-vue';
 import type { Ref, UnwrapRef } from 'vue';
-import { reactive, ref, computed, shallowRef } from 'vue';
 import { Modal } from '@arco-design/web-vue';
 
 export interface TableCustomColumnData extends TableColumnData {
@@ -23,8 +22,7 @@ export const useTable = (columns: TableCustomColumnData[], callBack: () => void)
 		stripe: false,
 		size: 'medium' as SizeProps,
 		columnResizable: false,
-		selectedKeys: [],
-		appKey: [],
+		selectedKeys: [] as Array<any>,
 		rowSelection: {
 			type: 'checkbox' as any,
 			showCheckedAll: true,
@@ -110,8 +108,11 @@ export const useForm = <T = any>(
 	form: Ref<UnwrapRef<T>>;
 	formRef: Ref<any>;
 	resetForm: () => void;
+	formPlaceholder: (value: string) => string;
 	restoreValidationForm: () => void;
 } => {
+	// 查看路由信息
+	const route = useRoute();
 	// 响应式的form
 	const form = ref(originalForm());
 	// formRef
@@ -125,10 +126,15 @@ export const useForm = <T = any>(
 	const restoreValidationForm = () => {
 		formRef?.value?.clearValidate();
 	};
+	// 表单占位符控制
+	const formPlaceholder = (value: string) => {
+		return !!route.query.isReadOnly ? '' : value;
+	};
 	// 暴露api
 	return {
 		form,
 		formRef,
+		formPlaceholder,
 		resetForm,
 		restoreValidationForm,
 	};

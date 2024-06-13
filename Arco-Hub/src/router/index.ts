@@ -59,7 +59,7 @@ router.beforeEach(async (to) => {
 	// 跳转页面是否需要token
 	if (to.meta.requiresAuth) {
 		// 不存在用户信息时
-		if (!userStore.userInfo.id) {
+		if (!userStore.userInfo.userId) {
 			// 用户cookie
 			const userToken = jsCookie.get('userToken');
 			// 判断token
@@ -79,27 +79,26 @@ router.beforeEach(async (to) => {
 				};
 			}
 		}
-		if (
-			userStore.userInfo.loginName !== 'admin' &&
-			!userStore.userInfo.roleList?.includes(to.name as string)
-		) {
-			return {
-				path: '/403',
-				query: { redirect: to.fullPath },
-			};
-		}
+		// if (!userStore.userInfo.roleList?.includes(to.name)) {
+		// 详情页面不做权限处理
+		// if (!to.meta.superiorName) {
+		// 	return {
+		// 		path: '/403',
+		// 		query: { redirect: to.fullPath },
+		// 	};
+		// }
+		// }
 	}
 	return true;
 });
 // 路由加载后
 router.afterEach((to) => {
-	// // 标签管理
-	// const tabStore = useTabStore();
-	// // 添加标签
-	// tabStore.addTab(to);
+	// 标签管理
+	const tabStore = useTabStore();
+	// 添加标签
+	tabStore.addTab(to);
 	// 关闭进度条
 	nProgress.done();
 });
-
 
 export default router;

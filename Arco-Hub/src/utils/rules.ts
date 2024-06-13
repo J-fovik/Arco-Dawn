@@ -2,10 +2,10 @@
 export const phoneRule = (value: string) => {
 	return value && /^1[3-9][0-9]{9}$/.test(value);
 };
-// 固定电话
-export function checkTel(tel: string) {
-	return /^((d{3,4})|d{3,4}-|s)?d{5,14}$/.test(tel)
-}
+// 座机验证
+export const landlinePhoneRule = (value: string) => {
+	return value && /^(0[1-9]\d{1,2}-?)?\d{7,8}$/.test(value);
+};
 // 邮箱验证
 export const emailRule = (value: string) => {
 	return value && /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/.test(value);
@@ -18,6 +18,14 @@ export const numberRule = (value: string) => {
 export const englishRule = (value: string) => {
 	return value && /^[a-zA-Z]+$/.test(value);
 };
+// 固定电话验证
+export const fixedLineTelephoneRule = (value: string) => {
+	return value && /^((\d2,3)|(\d{3}\-))?(0\d2,3|0\d{2,3}-)?[1-9]\d{6,7}(\-\d{1,4})?$/.test(value);
+};
+// 传真号码验证
+export const facsimileRule = (value: string) => {
+	return value && /^(?:\d{3,4}-)?\d{7,8}(?:-\d{1,6})?$/.test(value);
+};
 // 网址格式验证
 export const websiteRule = (value: string) => {
 	return (
@@ -27,25 +35,65 @@ export const websiteRule = (value: string) => {
 		)
 	);
 };
-// 正整数验证
-export const positiveIntegerRule = (value: string): boolean => {
-	// 首先，确保输入不是空字符串
-	if (!value) {
-		return false;
-	}
-
-	// 使用正则表达式来检查输入是否为正整数
-	const isPositiveInteger = /^\d+$/.test(value);
-
-	// 如果输入是正整数，进一步检查它是否在1到10000之间
-	if (isPositiveInteger) {
-		const numberValue = parseInt(value, 10);
-		if (numberValue > 0 && numberValue <= 1000) {
-			return true;
-		}
-	}
-
-	// 如果输入不是正整数或不在指定范围内，返回false
-	return false;
+// 全特殊字符验证
+export const specialCharactersRule = (value: string) => {
+	return (
+		value &&
+		/[`~!@#$%^&*()_\-+=<>?:"{}|,.\/;'\\[\]·~！@#￥%……&*（）——\-+={}|《》？：“”【】、；‘’，。、]/.test(
+			value
+		)
+	);
 };
-
+// 字母数字组合验证
+export const alphanumericRule = (value: string) => {
+	return value && /^[0-9a-zA-Z]*$/.test(value);
+};
+// 字母汉字组合验证
+export const alphabetChineseCharactersRule = (value: string) => {
+	return value && /^[a-zA-Z\u4e00-\u9fa5]+$/.test(value);
+};
+// 汉字验证
+export const chineseCharacterRule = (value: string) => {
+	return value && /[^\u4E00-\u9FA5]/.test(value);
+};
+// 身份证验证
+export const identityCardRule = (value: string) => {
+	return (
+		value &&
+		(/^[1-9]\d{5}\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{2}$/.test(value) ||
+			/^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/.test(
+				value
+			))
+	);
+};
+// 营业执照验证
+export const businessLicenseCardRule = (value: string) => {
+	return (
+		value &&
+		/(^(?:(?![IOZSV])[\dA-Z]){2}\d{6}(?:(?![IOZSV])[\dA-Z]){10}$)|(^\d{15}$)/.test(value)
+	);
+};
+// 银行卡验证
+export const bankCardRule = (value: string) => {
+	return value && /^([1-9]{1})(\d{14}|\d{18})$/.test(value);
+};
+// 港澳通信证验证
+export const hongKongAndMacauCommunicationCertificateRule = (value: string) => {
+	return value && /^([A-Z]\d{6,10}(\(\w{1}\))?)$/.test(value);
+};
+// 护照验证
+export const passportCardRule = (value: string) => {
+	return value && /^([a-zA-z]|[0-9]){5,17}$/.test(value);
+};
+// 军官证验证
+export const officerCardRule = (value: string) => {
+	return value && /^[\u4E00-\u9FA5](字第)([0-9a-zA-Z]{4,8})(号?)$/.test(value);
+};
+// 赴台证
+export const goTaiWanCardRule = (value: string) => {
+	return value && (/^[0-9]{8}$/.test(value) || /^[0-9]{10}$/.test(value));
+};
+// 台胞证  compatriots
+export const taiWanCompatriotsCardRule = (value: string) => {
+	return value && /\d{10}\(B\)/.test(value);
+};

@@ -22,8 +22,6 @@
 </template>
 
 <script lang="ts" setup name="ZsContent">
-import { computed } from 'vue';
-import { useRoute } from 'vue-router';
 import { useAppStore } from '@/pinia';
 // 面包屑
 const breadcrumb = computed(() => {

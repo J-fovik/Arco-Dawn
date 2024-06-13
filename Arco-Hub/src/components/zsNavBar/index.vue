@@ -9,11 +9,11 @@
 			</a-space>
 		</div>
 		<div class="center-side">
-			<zs-menu v-if="appStore.appConfig.topMenu" />
+			<!-- <zs-menu v-if="appStore.appConfig.topMenu" /> -->
 		</div>
 		<a-space class="right-side" size="large">
 			<!-- 主题 -->
-			<!-- <a-tooltip
+			<a-tooltip
 				:content="
 					appStore.appConfig.theme === 'light'
 						? '点击切换为暗色模式'
@@ -31,71 +31,8 @@
 						<icon-sun-fill v-else />
 					</template>
 				</a-button>
-			</a-tooltip> -->
+			</a-tooltip>
 			<!-- 主题 -->
-			<!-- 消息 -->
-			<!-- <a-popover title="最新公告">
-				<a-badge :count="1" dot>
-					<a-button class="nav-btn" type="outline" shape="circle">
-						<icon-sound />
-					</a-button>
-				</a-badge>
-				<template #content>
-					<div style="width: 300px">
-						<a-list :max-height="340" :scrollbar="true" :bordered="false">
-							<a-list-item v-for="item of 3" style="padding: 13px 0">
-								<a-space align="start">
-									<div style="padding-top: 2px">
-										<a-tag color="blue">最新</a-tag>
-									</div>
-									<span style="line-height: 1.5"
-										>关于认真做好端午节期间旅游安全工作及放假安排的通知</span
-									>
-								</a-space>
-							</a-list-item>
-						</a-list>
-					</div>
-				</template>
-			</a-popover> -->
-			<!-- 消息 -->
-			<!-- <a-popover>
-				<a-badge :count="appStore.appConfig.unreadMessage">
-					<a-button class="nav-btn" type="outline" shape="circle">
-						<template #icon>
-							<icon-notification />
-						</template>
-					</a-button>
-				</a-badge>
-				<template #title>
-					<div class="box-flex jc-sb">
-						<span>消息提示</span>
-						<a-button v-if="!!appStore.appConfig.unreadMessage" type="text" size="small">清空</a-button>
-					</div>
-				</template>
-				<template #content>
-					<div style="width: 400px">
-						<a-list
-							:max-height="340"
-							:scrollbar="true"
-							:bordered="false"
-						>
-							<a-list-item v-for="item of appStore.appConfig.unreadMessage">
-								<a-list-item-meta title="消息" description="您有新的订单">
-									<template #avatar>
-										<a-avatar
-											shape="square"
-											:style="{ backgroundColor: '#3370ff' }"
-										>
-											<icon-notification />
-										</a-avatar>
-									</template>
-								</a-list-item-meta>
-							</a-list-item>
-						</a-list>
-					</div>
-				</template>
-			</a-popover> -->
-			<!-- 消息 -->
 			<!-- 全屏 -->
 			<a-tooltip :content="isFullscreen ? '点击退出全屏模式' : '点击进入全屏模式'">
 				<a-button
@@ -132,9 +69,9 @@
 				</a-avatar>
 				<template #content>
 					<a-doption>
-						<a-space @click="router.push('/system/userSetting')">
+						<a-space @click="router.push('/system/dictionaryManage')">
 							<icon-settings />
-							<span> 用户设置 </span>
+							<span> 字典管理 </span>
 						</a-space>
 					</a-doption>
 					<a-doption>
@@ -152,27 +89,37 @@
 
 <script setup lang="ts" name="ZsNavBar">
 import jsCookie from 'js-cookie';
-import { useRouter } from 'vue-router';
+import { useModal, useBasicsState } from '@/hooks';
 import { useFullscreen } from '@vueuse/core';
-import { useAppStore, useUserStore } from '@/pinia';
-import ZsMenu from '@/components/zsMenu/index.vue';
-
+import { useAppStore, useTabStore, useUserStore } from '@/pinia';
+// 对话框
+const { warningModal } = useModal();
+// 标签页控制
+const { clearTabList } = useTabStore();
+// 状态控制 ｜ 弹窗控制
+const [activeKey, setActiveKey] = useBasicsState('');
 // app配置
 const appStore = useAppStore();
 // 用户信息
-const { setUserInfo } = useUserStore();
+const userStore = useUserStore();
 // 路由控制
 const router = useRouter();
 // 全屏控制
 const { isFullscreen, toggle: handleToggleFullscreen } = useFullscreen();
 // 登出
 const logout = () => {
-	// 请空用户信息
-	setUserInfo({});
-	// 清除Cookie
-	jsCookie.remove('userToken');
-	// 跳转登录
-	router.push('/login');
+	warningModal(`确定退出登录吗？`, async (done) => {
+		// 请空用户信息
+		userStore.setUserInfo({});
+		// 清除Cookie
+		jsCookie.remove('userToken');
+		// 清除标签
+		clearTabList();
+		// 关闭弹窗
+		done(true);
+		// 跳转登录
+		router.push('/login');
+	});
 };
 </script>
 

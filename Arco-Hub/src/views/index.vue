@@ -25,16 +25,11 @@
 					</a-layout-sider>
 				</template>
 				<a-layout class="layout-content" :style="paddingStyle">
-					<!-- <zs-tab-bar></zs-tab-bar> -->
+					<zs-tab-bar></zs-tab-bar>
 					<a-layout-content>
-						<template v-if="mode">
+						<template v-if="isDev">
 							<router-view v-slot="{ Component, route }">
-								<component
-									v-if="route.meta.ignoreCache"
-									:is="Component"
-									:key="route.fullPath"
-								/>
-								<keep-alive v-else :include="computedCacheList">
+								<keep-alive :include="computedCacheList">
 									<component :is="Component" :key="route.fullPath" />
 								</keep-alive>
 							</router-view>
@@ -42,12 +37,7 @@
 						<template v-else>
 							<router-view v-slot="{ Component, route }">
 								<transition name="fade" mode="out-in" appear>
-									<component
-										v-if="route.meta.ignoreCache"
-										:is="Component"
-										:key="route.fullPath"
-									/>
-									<keep-alive v-else :include="computedCacheList">
+									<keep-alive :include="computedCacheList" :max="10">
 										<component :is="Component" :key="route.fullPath" />
 									</keep-alive>
 								</transition>
@@ -61,13 +51,9 @@
 </template>
 
 <script lang="ts" setup name="Layout">
-import { computed } from 'vue';
 import { useAppStore, useTabStore } from '@/pinia';
-import ZsNavBar from '@/components/zsNavBar/index.vue';
-import ZsMenu from '@/components/zsMenu/index.vue';
-// import ZsTabBar from '@/components/zsTabBar/index.vue';
 // 当前环境
-const mode = import.meta.env.DEV;
+const isDev = import.meta.env.DEV;
 // app配置
 const appStore = useAppStore();
 // 多页签列表
@@ -149,7 +135,6 @@ const paddingStyle = computed(() => {
 	}
 }
 .layout-content {
-	min-height: 100vh;
 	overflow-y: hidden;
 	background-color: var(--color-fill-2);
 	transition: padding 0.2s cubic-bezier(0.34, 0.69, 0.1, 1);

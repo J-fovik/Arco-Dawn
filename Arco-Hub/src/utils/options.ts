@@ -3,10 +3,10 @@ import type { SelectOptionData } from '@arco-design/web-vue';
 export const ALL_OPTIONS = [
 	{
 		label: '全部',
-		value: ''
-	}
-]
+		value: '',
+	},
+];
 
-export default (options: Array<SelectOptionData>, value: string) => {
+export default (options: Array<SelectOptionData>, value: string | number) => {
 	return options.find((item) => item.value === value);
 };
