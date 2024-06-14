@@ -3,8 +3,8 @@ export default {
 	name: 'menu',
 	meta: {
 		requiresAuth: true,
-		icon: 'icon-common',
-		order: 1,
+		icon: 'icon-star',
+		order: 2,
 		title: '菜单',
 	},
 	children: [

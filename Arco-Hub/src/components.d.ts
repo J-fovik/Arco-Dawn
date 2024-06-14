@@ -11,6 +11,7 @@ declare module 'vue' {
     RouterView: typeof import('vue-router')['RouterView']
     ZsChart: typeof import('./components/zsChart/index.vue')['default']
     ZsContent: typeof import('./components/zsContent/index.vue')['default']
+    ZsDynamicTime: typeof import('./components/zsDynamicTime/index.vue')['default']
     ZsEditPassword: typeof import('./components/zsEditPassword/index.vue')['default']
     ZsGlobalSetting: typeof import('./components/zsGlobalSetting/index.vue')['default']
     ZsMenu: typeof import('./components/zsMenu/index.vue')['default']

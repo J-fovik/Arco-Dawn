@@ -117,8 +117,8 @@ const [loginCode, setLoginCode] = useBasicsState(
 );
 // form
 const { form } = useForm(() => ({
-	userAccount: '',
-	password: '',
+	userAccount: 'JCY',
+	password: 'JCY123',
 	validateCode: '',
 }));
 // 按钮是否可点击

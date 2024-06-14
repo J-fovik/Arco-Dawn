@@ -22,7 +22,7 @@ export default {
 			name: 'SystemUserOperate',
 			meta: {
 				requiresAuth: true,
-				title: '用户维护',
+				title: '用户管理维护',
 				superiorName: 'SystemUserManage',
 			},
 			component: () => import('@/views/system/userManage/operate/index.vue'),

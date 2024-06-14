@@ -26,16 +26,12 @@
 				<span>菜单栏</span>
 				<a-switch v-model="appStore.appConfig.menu" />
 			</div>
-			<div v-if="appStore.appConfig.menu" class="switch-wrapper">
+			<!-- <div v-if="appStore.appConfig.menu" class="switch-wrapper">
 				<span>菜单置顶</span>
 				<a-switch
 					:default-checked="appStore.appConfig.topMenu"
 					@change="appStore.setTopMenu"
 				/>
-			</div>
-			<!-- <div class="switch-wrapper">
-				<span>底部</span>
-				<a-switch v-model="appStore.appConfig.footer" />
 			</div> -->
 			<div class="switch-wrapper" v-cloak>
 				<span>菜单宽度</span>
@@ -45,7 +41,7 @@
 					:style="{ width: '80px' }"
 				/>
 			</div>
-			<!-- <div class="switch-wrapper">
+			<div class="switch-wrapper">
 				<span>元素大小</span>
 				<a-space>
 					<a-tag
@@ -70,7 +66,7 @@
 						>large</a-tag
 					>
 				</a-space>
-			</div> -->
+			</div>
 		</div>
 		<div class="settings-box">
 			<h5 class="title">其他设置</h5>

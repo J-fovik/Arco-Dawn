@@ -1,5 +1,5 @@
 <template>
-	<div ref="chartDom" style="width: 100%; height: 310px"></div>
+	<div ref="chartDom" style="width: 100%; height: 100%"></div>
 </template>
 
 <script lang="ts" setup name="ZsChart">
@@ -16,7 +16,7 @@ const props = withDefaults(
 	}>(),
 	{
 		chartOption: () => ({}),
-	},
+	}
 );
 // 画布绑定元素
 const chartDom = shallowRef<HTMLDivElement | null>(null);
@@ -37,7 +37,7 @@ watch(
 		if (myChart.value) {
 			myChart.value.setOption(props.chartOption);
 		}
-	},
+	}
 );
 // 监听元素挂载状态
 watch(chartDom, async (newValue) => {
@@ -55,6 +55,6 @@ watch(
 		appStore.appConfig.topMenu,
 		appStore.appConfig.menuWidth,
 	],
-	debounceFn,
+	debounceFn
 );
 </script>
