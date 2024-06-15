@@ -3,7 +3,7 @@ export default {
 	name: 'System',
 	meta: {
 		requiresAuth: true,
-		icon: 'icon-common',
+		icon: 'icon-tool',
 		order: 1,
 		title: '系统管理',
 	},

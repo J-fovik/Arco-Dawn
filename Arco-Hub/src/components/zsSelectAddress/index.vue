@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts" name="ZsSelectAddress">
-import addressJson from './address.json';
+import addressJson from '@/assets/json/address.json';
 // 父组件参数
 withDefaults(
 	defineProps<{
@@ -27,7 +27,7 @@ withDefaults(
 		modelValue: '',
 		placeholder: '请选择景区位置',
 		checkStrictly: true,
-	},
+	}
 );
 // 父组件参数
 defineEmits(['update:modelValue']);

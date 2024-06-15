@@ -18,10 +18,10 @@
 	>
 		<div class="settings-box">
 			<h5 class="title">内容区域</h5>
-			<div class="switch-wrapper">
+			<!-- <div class="switch-wrapper">
 				<span>导航栏</span>
 				<a-switch v-model="appStore.appConfig.navbar" />
-			</div>
+			</div> -->
 			<div class="switch-wrapper">
 				<span>菜单栏</span>
 				<a-switch v-model="appStore.appConfig.menu" />
@@ -40,32 +40,6 @@
 					:disabled="appStore.appConfig.topMenu"
 					:style="{ width: '80px' }"
 				/>
-			</div>
-			<div class="switch-wrapper">
-				<span>元素大小</span>
-				<a-space>
-					<a-tag
-						checkable
-						color="red"
-						:checked="appStore.appConfig.size === 'small'"
-						@check="appStore.setElementSize('small')"
-						>small</a-tag
-					>
-					<a-tag
-						checkable
-						color="red"
-						:checked="appStore.appConfig.size === 'medium'"
-						@check="appStore.setElementSize('medium')"
-						>medium</a-tag
-					>
-					<a-tag
-						checkable
-						color="red"
-						:checked="appStore.appConfig.size === 'large'"
-						@check="appStore.setElementSize('large')"
-						>large</a-tag
-					>
-				</a-space>
 			</div>
 		</div>
 		<div class="settings-box">

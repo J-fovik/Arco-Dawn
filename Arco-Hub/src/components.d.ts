@@ -7,6 +7,8 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    GiIconSelector: typeof import('./components/GiIconSelector/index.vue')['default']
+    GiOverFlowTags: typeof import('./components/GiOverFlowTags/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     ZsChart: typeof import('./components/zsChart/index.vue')['default']
@@ -14,10 +16,13 @@ declare module 'vue' {
     ZsDynamicTime: typeof import('./components/zsDynamicTime/index.vue')['default']
     ZsEditPassword: typeof import('./components/zsEditPassword/index.vue')['default']
     ZsGlobalSetting: typeof import('./components/zsGlobalSetting/index.vue')['default']
+    ZsIconSelector: typeof import('./components/zsIconSelector/index.vue')['default']
     ZsMenu: typeof import('./components/zsMenu/index.vue')['default']
     ZsNavBar: typeof import('./components/zsNavBar/index.vue')['default']
+    ZsOverFlowTags: typeof import('./components/zsOverFlowTags/index.vue')['default']
     ZsSearchTableMould: typeof import('./components/zsSearchTableMould/index.vue')['default']
     ZsSelectAddress: typeof import('./components/zsSelectAddress/index.vue')['default']
+    ZsSelectIcon: typeof import('./components/zsSelectIcon/index.vue')['default']
     ZsTabBar: typeof import('./components/zsTabBar/index.vue')['default']
     ZsWEditor: typeof import('./components/zsWEditor/index.vue')['default']
   }

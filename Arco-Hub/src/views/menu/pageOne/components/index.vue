@@ -55,7 +55,7 @@
 				</a-grid-item>
 				<a-grid-item :span="12">
 					<a-form-item label="手机号:" field="phone">
-						<a-input-number
+						<a-input
 							v-model="form.phone"
 							:precision="0"
 							placeholder="请输入手机号"

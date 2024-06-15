@@ -45,7 +45,7 @@
 					</a-grid-item>
 					<a-grid-item :span="12">
 						<a-form-item label="手机号:" field="phone">
-							<a-input-number
+							<a-input
 								v-model="form.phone"
 								:precision="0"
 								placeholder="请输入手机号"
@@ -108,12 +108,12 @@ const { jumpTabName } = useTabStore();
 // 弹窗状态控制
 const [activeKey, setActiveKey] = useBasicsState<string | null>(null);
 // 表单
-const { form, formRef ,formPlaceholder} = useForm(() => ({
+const { form, formRef, formPlaceholder } = useForm(() => ({
 	name: '',
 	address: '',
 	money: undefined,
 	num: undefined,
-	phone: undefined,
+	phone: '',
 	startDate: '',
 	endDate: '',
 }));

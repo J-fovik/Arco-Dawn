@@ -8,16 +8,11 @@
 		}"
 	>
 		<a-breadcrumb class="container-breadcrumb" v-if="breadcrumb.length > 1">
-			<!-- <a-breadcrumb-item>
-				<component :is="route.meta.icon"></component>
-			</a-breadcrumb-item> -->
 			<a-breadcrumb-item v-for="(item, index) in breadcrumb" :key="index">
 				{{ item }}</a-breadcrumb-item
 			>
 		</a-breadcrumb>
-		<div>
-			<slot :title="breadcrumb ? breadcrumb.at(-1) : ''"></slot>
-		</div>
+		<slot :title="breadcrumb ? breadcrumb.at(-1) : ''"></slot>
 	</div>
 </template>
 
@@ -39,7 +34,7 @@ const route = useRoute();
 <style scoped>
 .container {
 	padding: 10px 20px;
-	overflow-y: auto;
+	overflow: auto;
 }
 .container-breadcrumb {
 	margin-bottom: 10px;

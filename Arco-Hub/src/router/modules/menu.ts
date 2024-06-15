@@ -1,9 +1,9 @@
 export default {
 	path: 'menu',
-	name: 'menu',
+	name: 'Menu',
 	meta: {
 		requiresAuth: true,
-		icon: 'icon-star',
+		icon: 'icon-code-sandbox',
 		order: 2,
 		title: '菜单',
 	},
@@ -13,7 +13,7 @@ export default {
 			name: 'MenuPageOne',
 			meta: {
 				requiresAuth: true,
-				title: '菜单页面一',
+				title: '表格菜单(一)',
 			},
 			component: () => import('@/views/menu/pageOne/index.vue'),
 		},
@@ -22,7 +22,7 @@ export default {
 			name: 'MenuPageTwo',
 			meta: {
 				requiresAuth: true,
-				title: '菜单页面二',
+				title: '表格菜单(二)',
 			},
 			component: () => import('@/views/menu/pageTwo/index.vue'),
 		},
@@ -31,10 +31,19 @@ export default {
 			name: 'MenuPageTwoOperate',
 			meta: {
 				requiresAuth: true,
-				title: '菜单页面二维护',
+				title: '表格菜单(二)维护',
 				superiorName: 'MenuPageTwo', // 对应上级name
 			},
 			component: () => import('@/views/menu/pageTwo/operate/index.vue'),
+		},
+		{
+			path: 'treeControl',
+			name: 'MenuTreeControl',
+			meta: {
+				requiresAuth: true,
+				title: '树形控件',
+			},
+			component: () => import('@/views/menu/treeControl/index.vue'),
 		},
 	],
 };

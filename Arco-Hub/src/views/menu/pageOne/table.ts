@@ -27,6 +27,7 @@ export const createTableColumns = (): TableCustomColumnData[] => {
 			title: 'ID',
 			dataIndex: 'uname',
 			show: true,
+			width: 80,
 			align: 'center',
 			render: ({ record }) => {
 				return h(Tag, { color: 'blue' }, { default: () => filterText(record.id) });
@@ -77,6 +78,8 @@ export const createTableColumns = (): TableCustomColumnData[] => {
 			title: '日期',
 			dataIndex: 'date',
 			show: true,
+			ellipsis: true,
+			tooltip: true,
 			align: 'center',
 			render: ({ record }) => {
 				return formatDate(record.date, 'YYYY-MM-DD');
@@ -84,9 +87,17 @@ export const createTableColumns = (): TableCustomColumnData[] => {
 		},
 		{
 			title: '图片',
-			width: 100,
+			width: 120,
 			dataIndex: 'image',
 			slotName: 'image',
+			show: true,
+			align: 'center',
+		},
+		{
+			title: '爱好',
+			width: 150,
+			dataIndex: 'hobby',
+			slotName: 'hobby',
 			show: true,
 			align: 'center',
 		},
