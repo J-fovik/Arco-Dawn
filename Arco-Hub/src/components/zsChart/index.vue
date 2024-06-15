@@ -1,14 +1,12 @@
 <template>
-	<div ref="chartDom" style="width: 100%; height: 100%"></div>
+	<div ref="eChartRef" style="width: 100%; height: 100%"></div>
 </template>
 
 <script lang="ts" setup name="ZsChart">
-import { useDebounceFn } from '@vueuse/core';
-import { sleep } from '@/utils';
-import { useAppStore } from '@/pinia';
+// 让echarts根据屏幕响应
+import { useResizeObserver } from '@vueuse/core';
+import { EChartsCoreOption } from 'echarts/core';
 import * as echarts from 'echarts';
-// app配置
-const appStore = useAppStore();
 // 父组件参数
 const props = withDefaults(
 	defineProps<{
@@ -18,43 +16,29 @@ const props = withDefaults(
 		chartOption: () => ({}),
 	}
 );
-// 画布绑定元素
-const chartDom = shallowRef<HTMLDivElement | null>(null);
+// ref绑定元素
+const eChartRef = ref<HTMLDivElement | null>(null);
 // 图表实例
-const myChart = shallowRef<echarts.ECharts | null>(null);
-// 节流
-const debounceFn = useDebounceFn(() => {
-	myChart.value?.resize({
-		animation: {
-			duration: 500,
-		},
-	});
-}, 500);
-// 监听
-watch(
-	() => props.chartOption,
-	() => {
-		if (myChart.value) {
-			myChart.value.setOption(props.chartOption);
-		}
-	}
-);
-// 监听元素挂载状态
-watch(chartDom, async (newValue) => {
-	if (newValue) {
-		await sleep(500);
-		myChart.value = echarts.init(chartDom.value as HTMLDivElement);
-		myChart.value.setOption(props.chartOption);
+let instance: any;
+onMounted(() => {
+	// 响应式数据
+	const options = toRef(props, 'chartOption');
+	// 确保获取到ref画布绑定元素
+	if (eChartRef.value) {
+		// 初始化
+		instance = echarts.init(eChartRef.value as HTMLDivElement);
+		// 配置
+		instance.setOption(options.value as EChartsCoreOption);
 	}
 });
-// 监听菜单变化
-watch(
-	() => [
-		appStore.appConfig.menu,
-		appStore.appConfig.menuCollapse,
-		appStore.appConfig.topMenu,
-		appStore.appConfig.menuWidth,
-	],
-	debounceFn
-);
+// 离开页面之前卸载实例
+onBeforeUnmount(() => {
+	if (instance) echarts.dispose(instance);
+});
+// 使用useResizeObserver监听容器大小变化
+useResizeObserver(eChartRef, () => {
+	if (instance) {
+		instance.resize();
+	}
+});
 </script>

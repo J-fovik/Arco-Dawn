@@ -33,6 +33,20 @@
 				</a-button>
 			</a-tooltip>
 			<!-- 主题 -->
+			<!-- 消息 -->
+			<a-badge :count="messageStore.messageNum">
+				<a-button
+					class="nav-btn"
+					type="outline"
+					shape="circle"
+					@click="setActiveKey('ZsMessageList')"
+				>
+					<template #icon>
+						<icon-notification />
+					</template>
+				</a-button>
+			</a-badge>
+			<!-- 消息 -->
 			<!-- 全屏 -->
 			<a-tooltip :content="isFullscreen ? '点击退出全屏模式' : '点击进入全屏模式'">
 				<a-button
@@ -84,6 +98,7 @@
 			</a-dropdown>
 			<!-- 用户信息 -->
 		</a-space>
+		<ZsMessageList v-if="activeKey === 'ZsMessageList'" @close="closeMessageModal" />
 	</div>
 </template>
 
@@ -91,7 +106,7 @@
 import jsCookie from 'js-cookie';
 import { useModal, useBasicsState } from '@/hooks';
 import { useFullscreen } from '@vueuse/core';
-import { useAppStore, useTabStore, useUserStore } from '@/pinia';
+import { useAppStore, useTabStore, useUserStore, useMessageStore } from '@/pinia';
 // 对话框
 const { warningModal } = useModal();
 // 标签页控制
@@ -100,6 +115,8 @@ const { clearTabList } = useTabStore();
 const [activeKey, setActiveKey] = useBasicsState('');
 // app配置
 const appStore = useAppStore();
+// 消息
+const messageStore = useMessageStore();
 // 用户信息
 const userStore = useUserStore();
 // 路由控制
@@ -120,6 +137,13 @@ const logout = () => {
 		// 跳转登录
 		router.push('/login');
 	});
+};
+// 关闭消息列表
+const closeMessageModal = () => {
+	// 刷新消息
+	messageStore.initMessageData();
+	// 关闭弹窗
+	setActiveKey('');
 };
 </script>
 

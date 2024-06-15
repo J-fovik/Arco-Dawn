@@ -10,6 +10,7 @@ export default {
 	// 公共
 	PUBLIC: {
 		DICTIONARY: '/api/v1/admin/user/getDictSelect', // 查询字典
+		MESSAGE_LIST: '/api/v1/admin/homeSearch/queryMessage', // 消息列表
 	},
 	// 系统管理
 	SYSTEM: {

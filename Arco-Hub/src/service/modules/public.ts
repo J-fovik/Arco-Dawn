@@ -9,4 +9,11 @@ export default {
 			url: URL.PUBLIC.DICTIONARY,
 			data,
 		}),
+		// 消息列表
+	getMessageList: (data: any) =>
+		request({
+			method: 'post',
+			url: URL.PUBLIC.MESSAGE_LIST,
+			data,
+		}),
 };
