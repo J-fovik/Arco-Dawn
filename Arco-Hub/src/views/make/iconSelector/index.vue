@@ -4,22 +4,17 @@
 			<a-form ref="formRef" size="large" layout="vertical" auto-label-width :model="form">
 				<a-grid :cols="2" :col-gap="20">
 					<a-grid-item>
-						<a-form-item label="选择图标(一):" field="icon">
+						<a-form-item label="选择图标:" field="icon">
 							<a-input-group class="flex-1">
-								<a-input v-model="form.iconOne" readonly placeholder="请选择图标">
-									<template v-if="form.iconOne" #prefix>
-										<component :is="form.iconOne"></component>
+								<a-input v-model="form.icon" readonly placeholder="请选择图标">
+									<template v-if="form.icon" #prefix>
+										<component :is="form.icon"></component>
 									</template>
 								</a-input>
 								<a-button type="primary" @click="setActiveKey('ZsIconSelector')"
 									>选择图标</a-button
 								>
 							</a-input-group>
-						</a-form-item>
-					</a-grid-item>
-					<a-grid-item>
-						<a-form-item label="选择图标(二):" field="icon">
-							<ZsSelectIcon v-model="form.iconTwo"></ZsSelectIcon>
 						</a-form-item>
 					</a-grid-item>
 				</a-grid>
@@ -39,13 +34,12 @@ import { useForm, useBasicsState } from '@/hooks';
 const [activeKey, setActiveKey] = useBasicsState<string | null>(null);
 // form
 const { form, formRef } = useForm(() => ({
-	iconOne: '',
-	iconTwo: '',
+	icon: '',
 }));
 
 // 设置图标
 const setMenuIcon = (icon: string) => {
-	form.value.iconOne = icon;
+	form.value.icon = icon;
 	// 关闭弹窗
 	setActiveKey('');
 };

@@ -20,7 +20,6 @@ declare module 'vue' {
     ZsOverFlowTags: typeof import('./components/zsOverFlowTags/index.vue')['default']
     ZsSearchTableMould: typeof import('./components/zsSearchTableMould/index.vue')['default']
     ZsSelectAddress: typeof import('./components/zsSelectAddress/index.vue')['default']
-    ZsSelectIcon: typeof import('./components/zsSelectIcon/index.vue')['default']
     ZsTabBar: typeof import('./components/zsTabBar/index.vue')['default']
     ZsWEditor: typeof import('./components/zsWEditor/index.vue')['default']
   }
