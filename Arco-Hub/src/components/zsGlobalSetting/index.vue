@@ -63,7 +63,13 @@
 				/>
 			</div>
 		</div>
-		<a-alert>配置之后仅是临时生效, 刷新或重新打开时将恢复默认设置。</a-alert>
+		<!-- <a-alert>配置之后仅是临时生效, 刷新或重新打开时将恢复默认设置。</a-alert> -->
+		<a-button type="dashed" status="danger" style="width: 100%" @click="appStore.restoreDefault">
+			<template #icon>
+				<icon-sync />
+			</template>
+			一键恢复默认
+		</a-button>
 	</a-drawer>
 </template>
 

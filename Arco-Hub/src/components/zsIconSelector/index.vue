@@ -1,7 +1,7 @@
 <template>
 	<a-modal
 		top="10%"
-		width="1000px"
+		width="80vw"
 		title="选择图标"
 		unmount-on-close
 		visible

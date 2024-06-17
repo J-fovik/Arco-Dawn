@@ -180,7 +180,7 @@ const login = async () => {
 	padding: 30px;
 	margin-left: 30px;
 	min-height: 400px;
-	background-color: white;
+	background-color: var(--color-bg-2);
 }
 .login-input {
 	height: 50px;
