@@ -4,7 +4,7 @@
 
 <script lang="ts" setup name="ZsChart">
 // 让echarts根据屏幕响应
-import { useResizeObserver } from '@vueuse/core';
+import { useDebounceFn, useResizeObserver } from '@vueuse/core';
 import { EChartsCoreOption } from 'echarts/core';
 import * as echarts from 'echarts';
 // 父组件参数
@@ -20,6 +20,14 @@ const props = withDefaults(
 const eChartRef = ref<HTMLDivElement | null>(null);
 // 图表实例
 let instance: any;
+// 节流
+const debounceFn = useDebounceFn(() => {
+	instance.resize({
+		animation: {
+			duration: 500,
+		},
+	});
+}, 500);
 onMounted(() => {
 	// 响应式数据
 	const options = toRef(props, 'chartOption');
@@ -35,10 +43,11 @@ onMounted(() => {
 onBeforeUnmount(() => {
 	if (instance) echarts.dispose(instance);
 });
+
 // 使用useResizeObserver监听容器大小变化
 useResizeObserver(eChartRef, () => {
 	if (instance) {
-		instance.resize();
+		debounceFn();
 	}
 });
 </script>

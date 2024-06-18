@@ -45,6 +45,13 @@
 		<div class="settings-box">
 			<h5 class="title">其他设置</h5>
 			<div class="switch-wrapper">
+				<span>灰度模式</span>
+				<a-switch
+					:default-checked="appStore.appConfig.isGrey"
+					@change="appStore.setGrayscale"
+				/>
+			</div>
+			<div class="switch-wrapper">
 				<span>色弱模式</span>
 				<a-switch
 					:default-checked="appStore.appConfig.colorWeak"
@@ -64,7 +71,12 @@
 			</div>
 		</div>
 		<!-- <a-alert>配置之后仅是临时生效, 刷新或重新打开时将恢复默认设置。</a-alert> -->
-		<a-button type="dashed" status="danger" style="width: 100%" @click="appStore.restoreDefault">
+		<a-button
+			type="dashed"
+			status="danger"
+			style="width: 100%"
+			@click="appStore.restoreDefault"
+		>
 			<template #icon>
 				<icon-sync />
 			</template>

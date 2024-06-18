@@ -17,6 +17,7 @@ interface AnyObject {
 interface AppState {
 	theme: string;
 	colorWeak: boolean;
+	isGrey: boolean;
 	colorWeakNumber: number;
 	navbar: boolean;
 	menu: boolean;

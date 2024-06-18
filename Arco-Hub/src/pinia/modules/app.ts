@@ -12,6 +12,7 @@ export const useAppStore = defineStore('app', () => {
 		...(localStorage.getItem(APP_CONFIG_KEY)
 			? JSON.parse(localStorage.getItem(APP_CONFIG_KEY)!)
 			: {}),
+		globalSettings: false, // 保证刷新后也是关闭状态
 	});
 	// 设置菜单展开收缩
 	const setMenuCollapse = (val: boolean) => {
@@ -34,6 +35,17 @@ export const useAppStore = defineStore('app', () => {
 	const setGlobalSettingsVisible = (val: boolean) => {
 		if (val === appConfig.globalSettings) return;
 		appConfig.globalSettings = val;
+		saveConfig();
+	};
+	// 设置灰度模式
+	const setGrayscale = (val: boolean) => {
+		if (val === appConfig.isGrey) return;
+		appConfig.isGrey = val;
+		if (val) {
+			document.body.style.filter = 'grayscale(100%)';
+		} else {
+			document.body.style.filter = 'none';
+		}
 		saveConfig();
 	};
 	// 设置色弱模式
@@ -83,10 +95,17 @@ export const useAppStore = defineStore('app', () => {
 		});
 	};
 	onMounted(() => {
+		// 主题设置
 		if (appConfig.theme === 'dark') {
 			document.body.setAttribute('arco-theme', 'dark');
 		} else {
 			document.body.removeAttribute('arco-theme');
+		}
+		// 灰度模式
+		if (appConfig.isGrey) {
+			document.body.style.filter = 'grayscale(100%)';
+		} else {
+			document.body.style.filter = 'none';
 		}
 	});
 	// 暴露API
@@ -96,6 +115,7 @@ export const useAppStore = defineStore('app', () => {
 		setTopMenu,
 		handleToggleTheme,
 		setElementSize,
+		setGrayscale,
 		setColorWeak,
 		setUnreadMessage,
 		setGlobalSettingsVisible,

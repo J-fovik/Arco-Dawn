@@ -1,6 +1,7 @@
 const settings: AppState = {
 	theme: 'light', // 主题
 	colorWeak: false, // 色弱
+	isGrey: false, // 灰色模式
 	navbar: true,
 	menu: true, // 菜单
 	topMenu: false, // 菜单置顶
