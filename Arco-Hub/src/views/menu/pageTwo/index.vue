@@ -104,9 +104,11 @@
 					:columns="visibleColumnsData"
 					:stripe="tableBaseOptions.stripe"
 					:loading="loading"
+					:summary="summaryTableData"
 				>
 					<template #status="{ record }">
 						<a-switch
+							v-if="record.sortTableNo !== '总计'"
 							size="medium"
 							:model-value="record.status === '1'"
 							:loading="activeKey === record.id"
@@ -124,7 +126,7 @@
 						<ZsOverFlowTags :data="record.hobby"></ZsOverFlowTags>
 					</template>
 					<template #operate="{ record }">
-						<a-button-group>
+						<a-button-group v-if="record.sortTableNo !== '总计'">
 							<a-button
 								type="text"
 								status="success"
@@ -198,6 +200,19 @@ const {
 	changeTableColumn, // 改变表格表头
 	changeTableSize, // 改变表格size
 } = useTable(createTableColumns(), () => initData());
+// 表格汇总
+const summaryTableData = ({ data }: { data: Array<any> }) => {
+	const countData = {
+		sortTableNo: '总计',
+		money: 0,
+	};
+	// 统计数据
+	data.forEach((record) => {
+		countData.money += record.money;
+	});
+	// 返回总计
+	return data.length ? [countData] : [];
+};
 /* 获取性别列表 */
 const { data: sexList } = useAsyncData(async () => {
 	// const { res, err } = await curryingRequest(() => SYSTEM_APIS.getSexListApi({}));

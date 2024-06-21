@@ -107,6 +107,8 @@ export const useAppStore = defineStore('app', () => {
 		} else {
 			document.body.style.filter = 'none';
 		}
+		// 色弱模式
+		setColorWeakNumber();
 	});
 	// 暴露API
 	return {
