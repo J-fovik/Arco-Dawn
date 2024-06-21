@@ -27,6 +27,7 @@
 									v-model="form.status"
 									:options="[...ALL_OPTIONS, ...STATUS_OPTIONS]"
 									allow-search
+									allow-clear
 									:field-names="{ label: 'label', value: 'value' }"
 									placeholder="请选择状态"
 								/>
@@ -38,6 +39,7 @@
 									v-model="form.sex"
 									:options="sexList"
 									allow-search
+									allow-clear
 									:field-names="{ label: 'label', value: 'value' }"
 									placeholder="请选择性别"
 								/>
@@ -49,6 +51,7 @@
 									v-model="form.type"
 									:options="typeList"
 									allow-search
+									allow-clear
 									:disabled="typeList.length === 0"
 									:field-names="{ label: 'label', value: 'value' }"
 									placeholder="请选择类型"

@@ -32,6 +32,7 @@
 					<a-select
 						v-model="form.roleCode"
 						allow-search
+						allow-clear
 						:options="roleList"
 						:placeholder="formPlaceholder('请选择角色')"
 					/>
@@ -40,6 +41,7 @@
 					<a-select
 						v-model="form.departCode"
 						allow-search
+						allow-clear
 						:options="departmentList"
 						:placeholder="formPlaceholder('请选择组织机构')"
 					/>
@@ -55,6 +57,8 @@
 							label: 'detailName',
 							value: 'detailCode',
 						}"
+						allow-search
+						allow-clear
 						:placeholder="formPlaceholder('请选择证件类型')"
 					/>
 				</a-form-item>

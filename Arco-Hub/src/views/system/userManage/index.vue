@@ -37,6 +37,8 @@
 										label: 'rolename',
 										value: 'roleCode',
 									}"
+									allow-search
+									allow-clear
 									:options="roleList"
 									placeholder="请选择角色"
 								/>
