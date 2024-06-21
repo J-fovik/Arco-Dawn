@@ -1,6 +1,6 @@
 import type { TableCustomColumnData } from '@/hooks';
 import { h } from 'vue';
-import { Tag } from '@arco-design/web-vue';
+import { Tag, Image } from '@arco-design/web-vue';
 import { filterText, turnDateTime, turnThousandth, formatDate, turnNumberToFixed2 } from '@/utils';
 import findOption from '@/utils/options'; // 根据value查label
 import { ALL_TYPE_OPTIONS } from '../mack';
@@ -89,9 +89,13 @@ export const createTableColumns = (): TableCustomColumnData[] => {
 			title: '图片',
 			width: 120,
 			dataIndex: 'image',
-			slotName: 'image',
 			show: true,
 			align: 'center',
+			render: ({ record }) => {
+				return record.image
+					? h(Image, { src: record.image, width: 100, preview: true })
+					: '-';
+			},
 		},
 		{
 			title: '爱好',

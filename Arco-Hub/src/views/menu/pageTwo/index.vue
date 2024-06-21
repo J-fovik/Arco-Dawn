@@ -118,10 +118,6 @@
 							<template #unchecked>恢复</template>
 						</a-switch>
 					</template>
-					<template #image="{ record }">
-						<a-image v-if="record.image" width="100" :src="record.image" />
-						<div v-else>-</div>
-					</template>
 					<template #hobby="{ record }">
 						<ZsOverFlowTags :data="record.hobby"></ZsOverFlowTags>
 					</template>
