@@ -321,5 +321,8 @@ const {
 	); // 处理数据
 });
 // 页面激活
-onActivated(initData);
+onActivated(() => {
+	console.log('onActivated',11);
+	initData();
+});
 </script>
