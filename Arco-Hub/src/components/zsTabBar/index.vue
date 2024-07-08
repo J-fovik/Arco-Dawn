@@ -11,7 +11,7 @@
 			<a-dropdown
 				trigger="contextMenu"
 				:popup-max-height="false"
-				@select="(key) => actionSelect(key, item.name)"
+				@select="(key: any) => actionSelect(key, item)"
 			>
 				<a-tag
 					closable
@@ -73,10 +73,10 @@ const closeTab = (key: string) => {
 	tabStore.deleteTab(key);
 };
 // 选中
-const actionSelect = (key: any, name: string) => {
+const actionSelect = (key: any, item: any) => {
 	// 关闭当前
 	if (key === 'current') {
-		closeTab(name);
+		closeTab(item.name);
 	}
 	// 关闭全部
 	if (key === 'all') {
@@ -88,9 +88,9 @@ const actionSelect = (key: any, name: string) => {
 	// 关闭其他
 	if (key === 'other') {
 		// 跳转到该路由
-		router.push({ name });
+		router.push({ name: item.name, query: item.query });
 		// 关闭其他路由
-		tabStore.clearOtherTab(name);
+		tabStore.clearOtherTab(item.name);
 	}
 };
 </script>
