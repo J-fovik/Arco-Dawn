@@ -91,12 +91,3 @@ export function isObject(value: unknown) {
 export function isArray(value: unknown) {
 	return Object.prototype.toString.call(value) === '[object Array]';
 }
-// 计算元素到文档顶部的距离
-export function getElementOffsetTop(element: any) {
-	let offsetTop = 0;
-	while (element) {
-		offsetTop += element.offsetTop;
-		element = element.offsetParent;
-	}
-	return offsetTop;
-}
