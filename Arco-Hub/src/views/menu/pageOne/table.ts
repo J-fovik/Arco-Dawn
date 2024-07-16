@@ -78,8 +78,7 @@ export const createTableColumns = (): TableCustomColumnData[] => {
 			title: '日期',
 			dataIndex: 'date',
 			show: true,
-			ellipsis: true,
-			tooltip: true,
+			width: 120,
 			align: 'center',
 			render: ({ record }) => {
 				return formatDate(record.date, 'YYYY-MM-DD');

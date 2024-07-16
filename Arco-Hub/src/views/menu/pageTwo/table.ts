@@ -78,11 +78,18 @@ export const createTableColumns = (): TableCustomColumnData[] => {
 			title: '日期',
 			dataIndex: 'date',
 			show: true,
-			ellipsis: true,
-			tooltip: true,
+			width: 120,
 			align: 'center',
 			render: ({ record }) => {
-				return formatDate(record.date, 'YYYY-MM-DD');
+				return h(
+					'div', // 第一个参数是标签名
+					{ class: '' }, // 第二个参数是属性对象
+					[
+						// 第三个参数是子节点数组
+						h('div', null, formatDate(record.date, 'YYYY/MM/DD HH:mm:ss')), // 第一个子节点
+						h('div', null, '日期'), // 第二个子节点
+					]
+				);
 			},
 		},
 		{
