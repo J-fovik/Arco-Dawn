@@ -242,16 +242,16 @@ const validateData = () => {
 };
 // 提交数据
 const submitData = async (name: 'addUser' | 'editUser') => {
-	const { err } = await curryingRequest(
-		() => SYSTEM_APIS[name]({ ...form.value, id: route.query.id ?? '' }),
-		{
-			before: () => setActiveKey('确定'),
-			after: () => setActiveKey(null),
-			successMsg: '保存成功',
-		}
-	);
-	// 处理错误
-	if (err) return;
+	// const { err } = await curryingRequest(
+	// 	() => SYSTEM_APIS[name]({ ...form.value, id: route.query.id ?? '' }),
+	// 	{
+	// 		before: () => setActiveKey('确定'),
+	// 		after: () => setActiveKey(null),
+	// 		successMsg: '保存成功',
+	// 	}
+	// );
+	// // 处理错误
+	// if (err) return;
 	// 触发成功
 	jumpTabName();
 };

@@ -174,7 +174,7 @@ import {
 } from '@/hooks';
 import { createTableColumns } from './table';
 // import curryingRequest, { SYSTEM_APIS } from '@/service';
-import { sleep } from '@/utils';
+import { sleep, getPastTime } from '@/utils';
 import { ALL_OPTIONS } from '@/utils/options'; // 全部
 import { TABLE_DATA, SEX_OPTIONS, TYPES_A_OPTIONS, TYPES_B_OPTIONS, STATUS_OPTIONS } from '../mack'; // 模拟接口数据
 import Operation from './components/index.vue';
@@ -189,7 +189,7 @@ const { form, resetForm } = useForm(
 		status: '', // 状态
 		sex: '', // 性别
 		type: '', // 类型
-		date: '', // 日期
+		date: getPastTime(3, 'days'), // 三天前日期
 	}),
 	() => resetData()
 );

@@ -55,8 +55,7 @@ const router = createRouter({
 router.beforeEach(async (to) => {
 	nProgress.start();
 	// 设置页面标题
-	let title = to.meta.title ? 'Arco ' + to.meta.title : 'Arco 管理后台';
-	document.title = title;
+	document.title = to.meta.title ? 'Arco ' + to.meta.title : 'Arco 管理后台';
 	// 查询用户信息
 	const userStore = useUserStore();
 	// 跳转页面是否需要token

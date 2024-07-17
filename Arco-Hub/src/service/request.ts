@@ -48,6 +48,11 @@ request.interceptors.request.use(
 		if (uerToken) {
 			config.headers['token'] = uerToken;
 		}
+		// // 统一请求带参
+		// config.data = {
+		// 	uuid: 'uuid' ?? '',
+		// 	...config.data,
+		// };
 		return config;
 	},
 	(error) => Promise.reject(error)
@@ -56,9 +61,11 @@ request.interceptors.request.use(
 // 响应拦截
 request.interceptors.response.use(
 	async (res) => {
+		// 文件类型时
 		if (['blob', 'arraybuffer'].includes(res.config.responseType as string)) {
 			return res.data;
 		} else {
+			// 请求成功
 			if (res.data.code === 0) {
 				return res.data;
 			} else {

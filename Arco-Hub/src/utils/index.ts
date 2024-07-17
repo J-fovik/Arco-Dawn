@@ -83,11 +83,3 @@ export const turnNumberToFixed2 = (value: string | number | undefined, empty = '
 };
 // 过滤文本处理空数据
 export const filterText = (value: any, empty = '-') => (value ? value : empty);
-
-export function isObject(value: unknown) {
-	return Object.prototype.toString.call(value) === '[object Object]';
-}
-
-export function isArray(value: unknown) {
-	return Object.prototype.toString.call(value) === '[object Array]';
-}

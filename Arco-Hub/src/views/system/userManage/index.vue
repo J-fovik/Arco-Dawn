@@ -192,20 +192,21 @@ const {
 // 批量操作表格
 const batchTableRows = (type: 'batchDeleteUser' | 'batchResetPassword' | 'batchLogoutUser') => {
 	warningModal(`确定操作选中的${tableBaseOptions.selectedKeys.length}数据吗？`, async (done) => {
-		const { res } = await curryingRequest(() =>
-			SYSTEM_APIS[type]({
-				idList: tableBaseOptions.selectedKeys,
-			})
-		);
-		// 关闭弹窗
+		// const { res } = await curryingRequest(() =>
+		// 	SYSTEM_APIS[type]({
+		// 		idList: tableBaseOptions.selectedKeys,
+		// 	})
+		// );
+		// // 关闭弹窗
+		// done(true);
+		// // 成功后刷新
+		// if (res) {
+		// 	// 重置勾选
+		// 	tableBaseOptions.selectedKeys = [];
+		// 	// 获取数据
+		// 	initData();
+		// }
 		done(true);
-		// 成功后刷新
-		if (res) {
-			// 重置勾选
-			tableBaseOptions.selectedKeys = [];
-			// 获取数据
-			initData();
-		}
 	});
 };
 // 页面激活时

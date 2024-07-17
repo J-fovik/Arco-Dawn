@@ -55,11 +55,7 @@
 				</a-grid-item>
 				<a-grid-item :span="12">
 					<a-form-item label="手机号:" field="phone">
-						<a-input
-							v-model="form.phone"
-							:precision="0"
-							placeholder="请输入手机号"
-						/>
+						<a-input v-model="form.phone" :precision="0" placeholder="请输入手机号" />
 					</a-form-item>
 				</a-grid-item>
 				<a-grid-item :span="12">
@@ -92,7 +88,7 @@
 <script lang="ts" setup name="ZsAddRole">
 import dayjs from 'dayjs';
 import { useForm, useBasicsState } from '@/hooks';
-import { turnThousandth, turnDateTime } from '@/utils';
+import { turnThousandth, turnDateTime, formatDate } from '@/utils';
 import { phoneRule, landlinePhoneRule } from '@/utils/rules';
 // import curryingRequest, { SYSTEM_APIS } from '@/service';
 // 父组件参数
@@ -108,7 +104,9 @@ console.log(props.data);
 // 弹窗状态控制
 const [activeKey, setActiveKey] = useBasicsState<string | null>(null);
 // 表单
-const { form, formRef, formPlaceholder } = useForm(() => ({ ...props.data }));
+const { form, formRef, formPlaceholder } = useForm(() => ({
+	...props.data,
+}));
 // 表单验证
 const rules = {
 	name: {

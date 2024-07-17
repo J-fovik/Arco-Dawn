@@ -81,15 +81,17 @@ export const createTableColumns = (): TableCustomColumnData[] => {
 			width: 120,
 			align: 'center',
 			render: ({ record }) => {
-				return h(
-					'div', // 第一个参数是标签名
-					{ class: '' }, // 第二个参数是属性对象
-					[
-						// 第三个参数是子节点数组
-						h('div', null, formatDate(record.date, 'YYYY/MM/DD HH:mm:ss')), // 第一个子节点
-						h('div', null, '日期'), // 第二个子节点
-					]
-				);
+				return record.sortTableNo == '总计'
+					? ''
+					: h(
+							'div', // 第一个参数是标签名
+							{ class: '' }, // 第二个参数是属性对象
+							[
+								// 第三个参数是子节点数组
+								h('div', null, formatDate(record.date, 'YYYY/MM/DD HH:mm:ss')), // 第一个子节点
+								h('div', null, '日期'), // 第二个子节点
+							]
+					  );
 			},
 		},
 		{

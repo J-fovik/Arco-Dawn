@@ -158,6 +158,7 @@
 </template>
 
 <script setup lang="ts" name="MenuPageTwo">
+import dayjs from 'dayjs';
 import {
 	useForm,
 	useTable,
@@ -183,7 +184,7 @@ const { form, resetForm } = useForm(
 		status: '', // 状态
 		sex: '', // 性别
 		type: '', // 类型
-		date: '', // 日期
+		date: dayjs().format('YYYY-MM-DD'), // 今日日期
 	}),
 	() => resetData()
 );
@@ -322,7 +323,7 @@ const {
 });
 // 页面激活
 onActivated(() => {
-	console.log('onActivated',11);
+	console.log('onActivated', 11);
 	initData();
 });
 </script>

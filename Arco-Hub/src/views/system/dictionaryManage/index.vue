@@ -105,23 +105,24 @@ const {
 // 批量操作表格
 const batchTableRows = (type: 'deleteDictionary') => {
 	warningModal(`确定操作选中的${tableBaseOptions.selectedKeys.length}数据吗？`, async (done) => {
-		const { err } = await curryingRequest(
-			() =>
-				SYSTEM_APIS[type]({
-					idList: tableBaseOptions.selectedKeys,
-				}),
-			{
-				successMsg: '操作成功',
-			}
-		);
-		// 处理错误
-		if (err) return;
-		// 关闭弹窗
+		// const { err } = await curryingRequest(
+		// 	() =>
+		// 		SYSTEM_APIS[type]({
+		// 			idList: tableBaseOptions.selectedKeys,
+		// 		}),
+		// 	{
+		// 		successMsg: '操作成功',
+		// 	}
+		// );
+		// // 处理错误
+		// if (err) return;
+		// // 关闭弹窗
+		// done(true);
+		// // 重置勾选
+		// tableBaseOptions.selectedKeys = [];
+		// // 获取数据
+		// initData();
 		done(true);
-		// 重置勾选
-		tableBaseOptions.selectedKeys = [];
-		// 获取数据
-		initData();
 	});
 };
 // 获取列表
