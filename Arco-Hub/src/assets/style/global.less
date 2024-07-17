@@ -14,6 +14,94 @@ body {
 	-webkit-font-smoothing: antialiased;
 }
 
+a {
+	text-decoration: none;
+}
+
+/* ****************************** 弹性盒  ****************************** */
+.flex {
+	display: flex;
+}
+
+.flex-col {
+	flex-direction: column;
+}
+
+.items-center {
+	align-items: center;
+}
+
+.items-end {
+	align-items: flex-end;
+}
+
+.justify-around {
+	justify-content: space-around;
+}
+
+.justify-between {
+	justify-content: space-between;
+}
+
+.justify-center {
+	justify-content: center;
+}
+
+.justify-end {
+	justify-content: flex-end;
+}
+.flex-1 {
+	flex: 1;
+}
+
+.flex-warp {
+	flex-wrap: wrap;
+}
+
+/* ****************************** 自定义样式 ****************************** */
+// 表格设置 列展示
+.table-setting {
+	width: 180px;
+	padding: 10px 20px;
+	background-color: var(--color-bg-popup);
+	border-radius: 4px;
+	box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
+	.table-setting-item {
+		margin-top: 10px;
+	}
+}
+
+// 二级页面提交页
+.submit-footer {
+	position: fixed;
+	width: 100%;
+	background-color: var(--color-bg-2);
+	bottom: 0;
+	left: 0;
+	padding: 15px 20px;
+}
+// 下拉样式
+.arco-dropdown-open .arco-icon-down {
+	transform: rotate(180deg);
+}
+// 表格样式
+.zs-table .arco-table-td-content .arco-empty {
+	padding: 100px 0;
+}
+// 对话框样式
+.custom-modal {
+	padding: 20px;
+	.arco-modal-header {
+		margin-bottom: 10px;
+	}
+	.arco-modal-title {
+		justify-content: start;
+	}
+	.arco-modal-footer {
+		margin-top: 10px;
+		text-align: right;
+	}
+}
 .echarts-tooltip-diy {
 	background: linear-gradient(
 		304.17deg,
@@ -61,27 +149,6 @@ body {
 		border-radius: 50%;
 	}
 }
-
-.general-card {
-	// min-height: 200px;
-	border-radius: 4px;
-	border: none;
-	& > .arco-card-header {
-		height: auto;
-		padding: 20px 20px 0;
-		border: none;
-	}
-	// & > .arco-card-body {
-	// 	padding: 0 20px 20px 20px;
-	// }
-}
-
-.split-line {
-	border-color: rgb(var(--gray-2));
-}
-a {
-	text-decoration: none;
-}
 .arco-table-cell {
 	.circle {
 		display: inline-block;
@@ -95,8 +162,23 @@ a {
 		}
 	}
 }
-
-// 自定义
+.split-line {
+	border-color: rgb(var(--gray-2));
+}
+// card样式
+.general-card {
+	// min-height: 200px;
+	border-radius: 4px;
+	border: none;
+	& > .arco-card-header {
+		height: auto;
+		padding: 20px 20px 0;
+		border: none;
+	}
+	// & > .arco-card-body {
+	// 	padding: 0 20px 20px 20px;
+	// }
+}
 .padding-top-xs {
 	padding-top: 6px;
 }
@@ -119,10 +201,16 @@ a {
 .margin-left {
 	margin-left: 20px;
 }
+// 价格格式
 .text-price::before {
 	content: '¥';
 	font-size: 70%;
 	margin-right: 4rpx;
+}
+// 百分比格式
+.text-rate::after {
+	content: '%';
+	margin-left: 4rpx;
 }
 .mx-3 {
 	margin-left: 3px;
@@ -139,7 +227,9 @@ a {
 .text-left {
 	text-align: left;
 }
-
+.text-right {
+	text-align: right;
+}
 .text-center {
 	text-align: center;
 }
@@ -189,90 +279,8 @@ a {
 .cursor-pointer {
 	cursor: pointer;
 }
+/* ****************************** 过渡动画 横向渐变 ****************************** */
 
-.flex {
-	display: flex;
-}
-
-.flex-col {
-	flex-direction: column;
-}
-
-.items-center {
-	align-items: center;
-}
-
-.items-end {
-	align-items: flex-end;
-}
-
-.justify-around {
-	justify-content: space-around;
-}
-
-.justify-between {
-	justify-content: space-between;
-}
-
-.justify-center {
-	justify-content: center;
-}
-
-.justify-end {
-	justify-content: flex-end;
-}
-.flex-1 {
-	flex: 1;
-}
-
-.flex-warp {
-	flex-wrap: wrap;
-}
-
-.arco-dropdown-open .arco-icon-down {
-	transform: rotate(180deg);
-}
-
-.zs-table .arco-table-td-content .arco-empty {
-	padding: 100px 0;
-}
-
-.custom-modal {
-	padding: 20px;
-	.arco-modal-header {
-		margin-bottom: 10px;
-	}
-	.arco-modal-title {
-		justify-content: start;
-	}
-	.arco-modal-footer {
-		margin-top: 10px;
-		text-align: right;
-	}
-}
-
-.table-setting {
-	width: 180px;
-	padding: 10px 20px;
-	background-color: var(--color-bg-popup);
-	border-radius: 4px;
-	box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
-	.table-setting-item {
-		margin-top: 10px;
-	}
-}
-
-// 二级页面提交页
-.submit-footer {
-	position: fixed;
-	width: 100%;
-	background-color: var(--color-bg-2);
-	bottom: 0;
-	left: 0;
-	padding: 15px 20px;
-}
-
-/* 过渡动画 横向渐变 */
 .fade-transverse-leave-active,
 .fade-transverse-enter-active {
 	transition: all 0.4s ease-out;
@@ -293,24 +301,26 @@ a {
 	transform: translateX(-20px);
 	opacity: 0;
 }
-/* 全局滚动条的整体部分 */
+
+/* ****************************** 滚动条样式 ****************************** */
+// 全局滚动条的整体部分
 ::-webkit-scrollbar {
 	width: 4px;
 	height: 6px;
 }
 
-/* 滚动条的边角部分 */
+// 滚动条的边角部分
 ::-webkit-scrollbar-corner {
 	display: block;
 }
 
-/* 滚动条的方块部分 */
+// 滚动条的方块部分
 ::-webkit-scrollbar-thumb {
 	border-radius: 8px;
 	background-color: rgba(0, 0, 0, 0.2);
 }
 
-/* 滚动条的轨道 */
+// 滚动条的轨道
 ::-webkit-scrollbar-thumb,
 ::-webkit-scrollbar-track {
 	border-right-color: transparent;
