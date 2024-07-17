@@ -35,6 +35,6 @@ export default defineConfig({
 	server: {
 		port: 8080, // 自定义端口号
 		open: true, // 运行 npm run dev 时自动打开浏览器
-		strictPort: true, // 如果端口已被占用，则直接退出
+		strictPort: false, // 如果端口已被占用，则直接退出
 	},
 });
