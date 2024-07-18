@@ -81,7 +81,7 @@
 			</div>
 		</div>
 		<a-typography-title :heading="6" style="color: #ffffff"
-			>Copyrigth@管理后台</a-typography-title
+			>Copyright@管理后台</a-typography-title
 		>
 		<a-typography-title :heading="6" style="color: #ffffff">技术支持：###</a-typography-title>
 	</div>

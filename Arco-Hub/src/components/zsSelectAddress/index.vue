@@ -10,7 +10,7 @@
 		:check-strictly="checkStrictly"
 		:options="addressJson.address"
 		:placeholder="placeholder"
-		@change="(v) => $emit('update:modelValue', v)"
+		@change="(v:any) => $emit('update:modelValue', v)"
 	></a-cascader>
 </template>
 
