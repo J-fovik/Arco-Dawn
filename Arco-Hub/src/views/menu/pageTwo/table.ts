@@ -79,6 +79,7 @@ export const createTableColumns = (): TableCustomColumnData[] => {
 			dataIndex: 'date',
 			show: true,
 			width: 120,
+			titleSlotName: 'date',
 			align: 'center',
 			render: ({ record }) => {
 				return record.sortTableNo == '总计'
@@ -89,7 +90,7 @@ export const createTableColumns = (): TableCustomColumnData[] => {
 							[
 								// 第三个参数是子节点数组
 								h('div', null, formatDate(record.date, 'YYYY/MM/DD HH:mm:ss')), // 第一个子节点
-								h('div', null, '日期'), // 第二个子节点
+								h('div', null, '自定义'), // 第二个子节点
 							]
 					  );
 			},

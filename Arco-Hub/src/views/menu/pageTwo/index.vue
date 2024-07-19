@@ -109,6 +109,12 @@
 					:loading="loading"
 					:summary="summaryTableData"
 				>
+					<!-- 表头插槽 -->
+					<template #date>
+						<div>日期</div>
+						<div>自定义</div>
+					</template>
+					<!-- 列插槽 -->
 					<template #status="{ record }">
 						<a-switch
 							v-if="record.sortTableNo !== '总计'"
@@ -323,7 +329,6 @@ const {
 });
 // 页面激活
 onActivated(() => {
-	console.log('onActivated', 11);
 	initData();
 });
 </script>

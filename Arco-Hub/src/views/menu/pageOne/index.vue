@@ -109,6 +109,7 @@
 					:loading="loading"
 					:summary="summaryTableData"
 				>
+					<!-- 列插槽 -->
 					<template #status="{ record }">
 						<a-switch
 							v-if="record.sortTableNo !== '总计'"
