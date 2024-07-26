@@ -1,3 +1,4 @@
+import { log } from 'console';
 import type { RouteRecordNormalized } from 'vue-router';
 // 模块
 const modules = import.meta.glob('./modules/*.ts', { eager: true });
@@ -20,7 +21,7 @@ const formatRoutes = (): RouteRecordNormalized[] => {
 							icon: next.meta.icon,
 						},
 					};
-				})
+			  })
 			: [next];
 		return [...list, ...children];
 	}, []);
@@ -51,5 +52,6 @@ const formatMenus = () => {
 
 // 返回模块路由
 export const appRoutes = formatRoutes();
+
 // 返回模块菜单
 export const appMenus = formatMenus();
