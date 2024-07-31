@@ -58,7 +58,7 @@ router.beforeEach(async (to) => {
 	document.title = to.meta.title ? 'Arco ' + to.meta.title : 'Arco 管理后台';
 	// 查询用户信息
 	const userStore = useUserStore();
-	// 跳转页面是否需要token
+	// 是否需要认证
 	if (to.meta.requiresAuth) {
 		// 不存在用户信息时
 		if (!userStore.userInfo.userId) {
