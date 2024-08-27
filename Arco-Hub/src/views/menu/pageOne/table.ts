@@ -50,7 +50,7 @@ export const createTableColumns = (): TableCustomColumnData[] => {
 				return h(
 					'span',
 					{ class: 'text-red text-price' },
-					turnThousandth(`${record.money ?? 0}`, '0')
+					turnThousandth(record.money ?? '0')
 				);
 			},
 		},

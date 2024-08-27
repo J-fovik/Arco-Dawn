@@ -136,7 +136,7 @@ const rules = {
 		required: true,
 		validator: (value: any, callback: any) => {
 			if (!value) callback('请选择开始时间');
-			if (form.value.startDate && dayjs(value).isBefore(dayjs(form.value.endDate)))
+			if (form.value.startDate && dayjs(value).isBefore(dayjs(form.value.startDate)))
 				callback('结束时间不能小于开始时间');
 		},
 	},

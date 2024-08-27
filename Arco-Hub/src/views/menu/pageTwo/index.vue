@@ -270,7 +270,7 @@ const batchTableRows = (id?: any) => {
 	}
 	warningModal(title, async (done) => {
 		console.log('删除数据：', id ? [id] : tableBaseOptions.selectedKeys);
-		// const { err } = await curryingRequest(
+		// const { res, err } = await curryingRequest(
 		// 	() =>
 		// 		SYSTEM_APIS.delApi({
 		// 			idList: id ? [id] : tableBaseOptions.selectedKeys,
@@ -283,10 +283,12 @@ const batchTableRows = (id?: any) => {
 		// if (err) return;
 		// 关闭弹窗
 		done(true);
-		// 重置勾选
-		tableBaseOptions.selectedKeys = [];
-		// 获取数据
-		initData();
+		// if (res) {
+		// 	// 重置勾选
+		// 	tableBaseOptions.selectedKeys = [];
+		// 	// 获取数据
+		// 	initData();
+		// }
 	});
 };
 /* 获取列表 */
