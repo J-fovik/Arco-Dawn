@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import { useBasicsMap } from '@/hooks';
-import curryingRequest, { PUBLIC_APIS } from '@/service';
+import { URL, curryingRequest } from '@/service';
 
 interface Dictionary {
 	detailCode: string;
@@ -13,22 +13,31 @@ export const useDictionaryStore = defineStore('dictionary', () => {
 	const { basicsMap, hasValue, getValue, addValue } = useBasicsMap<Array<Dictionary>>([]);
 	// 获取参数
 	const initData = async () => {
-		const { res } = await curryingRequest(() => PUBLIC_APIS.getDictionaryInfo({}));
+		// const { res } = await curryingRequest({
+		// 	url: URL.PUBLIC.DICTIONARY,
+		// });
+		const list = [
+			{ label: 'aaa', type: 'A', value: '111' },
+			{ label: 'bbb', type: 'B', value: '222' },
+			{ label: 'ccc', type: 'C', value: '333' },
+			{ label: 'ddd', type: 'A', value: '444' },
+			{ label: 'eee', type: 'B', value: '444' },
+		];
 		// 循环添加map数据
-		res?.data.forEach((item: Dictionary) => {
-			if (hasValue(item.typeCode)) {
-				const dictionaryList = getValue(item.typeCode) as Array<any>;
-				basicsMap.value.set(item.typeCode, [...dictionaryList, item]);
+		list.forEach((item: any) => {
+			if (hasValue(item.type)) {
+				const dictionaryList = getValue(item.type) as Array<any>;
+				basicsMap.value.set(item.type, [...dictionaryList, item]);
 			} else {
-				addValue(item.typeCode, [item]);
+				addValue(item.type, [item]);
 			}
 		});
 	};
-	// 获取具体属性
-	const getDictionaryItem = (key: string, value: any): Dictionary | AnyObject => {
+	//  获取具体的值
+	const getDictionaryItem = (key: string, value: any): any => {
 		return (
-			getValue(key)?.find((item) => {
-				return item.detailCode === value;
+			getValue(key)?.find((item: any) => {
+				return item.value === value;
 			}) ?? {}
 		);
 	};

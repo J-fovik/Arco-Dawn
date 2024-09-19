@@ -82,12 +82,12 @@
 					<img alt="avatar" src="@/assets/images/user.png" />
 				</a-avatar>
 				<template #content>
-					<a-doption>
+					<!-- <a-doption>
 						<a-space @click="router.push('/system/dictionaryManage')">
 							<icon-settings />
 							<span> 字典管理 </span>
 						</a-space>
-					</a-doption>
+					</a-doption> -->
 					<a-doption>
 						<a-space @click="logout">
 							<icon-export />
@@ -132,6 +132,8 @@ const logout = () => {
 		jsCookie.remove('userToken');
 		// 清除标签
 		clearTabList();
+		// 关闭定时获取消息
+		messageStore.pause();
 		// 关闭弹窗
 		done(true);
 		// 跳转登录

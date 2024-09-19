@@ -4,7 +4,7 @@
 			<a-card
 				class="general-card"
 				style="min-width: 400px; overflow-y: auto"
-				title="菜单阅览"
+				title="地区单选"
 			>
 				<a-tree
 					:data="area"

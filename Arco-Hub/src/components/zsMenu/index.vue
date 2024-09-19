@@ -38,6 +38,7 @@
 <script setup lang="ts" name="ZsMenu">
 import { useAppStore, useUserStore } from '@/pinia';
 import { appMenus } from '@/router/base';
+import { reduceRoutes } from '@/utils';
 // 路由信息
 const route = useRoute();
 // 路由控制
@@ -51,6 +52,11 @@ const selectedKey = ref<string[]>([route.name as string]);
 // 用户菜单
 const userMenus = computed(() => {
 	return appMenus;
+	// admin 显示全部菜单
+	if (userStore.userInfo.loginName === 'admin') return appMenus;
+	// 判断不存在返回空路由
+	if (!userStore.userInfo.roleList?.length) return [];
+	return reduceRoutes(appMenus, userStore.userInfo!.roleList);
 });
 // 监听路由变化
 watch(route, (newRoute) => {

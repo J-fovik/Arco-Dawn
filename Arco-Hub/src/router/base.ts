@@ -1,4 +1,3 @@
-import { log } from 'console';
 import type { RouteRecordNormalized } from 'vue-router';
 // 模块
 const modules = import.meta.glob('./modules/*.ts', { eager: true });

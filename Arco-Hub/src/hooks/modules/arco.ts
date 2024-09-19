@@ -46,6 +46,10 @@ export const useTable = (columns: TableCustomColumnData[], callBack: () => void)
 			},
 		},
 	});
+	// 获取选中的数据集合
+	const getSelectAllRow = (tableData: Array<any>, key: string = 'id') => {
+		return tableData.filter((item) => tableBaseOptions.selectedKeys.includes(item[key]));
+	};
 	// 可见的表格头
 	const visibleColumnsData = computed(() => columnsData.value.filter((item) => !!item.show));
 	// 切换表格大小
@@ -69,8 +73,16 @@ export const useTable = (columns: TableCustomColumnData[], callBack: () => void)
 		columnsData.value[num].show = show;
 	};
 	// 处理表格数据
-	const extendTableList = (list: Array<any>) => {
+	const extendTableList = (list: Array<any>, numberKeys: Array<string> = []) => {
 		return list.map((item, index) => {
+			// 指定key转数字
+			if (numberKeys.length) {
+				numberKeys.forEach((key) => {
+					if (item[key] !== undefined) {
+						item[key] = item[key] * 1;
+					}
+				});
+			}
 			return {
 				...item,
 				sortTableNo: createRowNo(index),
@@ -91,6 +103,7 @@ export const useTable = (columns: TableCustomColumnData[], callBack: () => void)
 		visibleColumnsData,
 		selectRow,
 		tableBaseOptions,
+		getSelectAllRow,
 		createRowNo,
 		extendTableList,
 		setSelectRow,

@@ -81,14 +81,17 @@ router.beforeEach(async (to) => {
 				};
 			}
 		}
-		// if (!userStore.userInfo.roleList?.includes(to.name)) {
-		// 详情页面不做权限处理
-		// if (!to.meta.superiorName) {
-		// 	return {
-		// 		path: '/403',
-		// 		query: { redirect: to.fullPath },
-		// 	};
-		// }
+		// if (
+		// 	userStore.userInfo.loginName !== 'admin' &&
+		// 	!userStore.userInfo.roleList?.includes(to.name as string)
+		// ) {
+		// 	// 详情页面不做权限处理;
+		// 	if (!to.meta.superiorName) {
+		// 		return {
+		// 			path: '/403',
+		// 			query: { redirect: to.fullPath },
+		// 		};
+		// 	}
 		// }
 	}
 	return true;

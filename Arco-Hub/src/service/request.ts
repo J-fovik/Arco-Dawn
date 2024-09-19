@@ -1,7 +1,7 @@
 import axios from 'axios';
 import jsCookie from 'js-cookie';
 import { Message, Modal } from '@arco-design/web-vue';
-import { useUserStore, useTabStore } from '@/pinia';
+import { useUserStore, useTabStore, useMessageStore } from '@/pinia';
 import router from '@/router';
 
 export interface HttpResponse<T = unknown> {
@@ -22,12 +22,16 @@ const logoutUser = () => {
 	const { setUserInfo } = useUserStore();
 	// 标签页控制
 	const { clearTabList } = useTabStore();
+	// 消息
+	const messageStore = useMessageStore();
 	// 删除token
 	jsCookie.remove('userToken');
 	// 清除用户信息
 	setUserInfo({});
 	// 清除标签页
 	clearTabList();
+	// 关闭获取消息
+	messageStore.pause();
 	// 跳转登录
 	router.push('/login');
 };
@@ -35,6 +39,7 @@ const logoutUser = () => {
 const request = axios.create({
 	baseURL: import.meta.env.VITE_API_BASE_URL,
 	timeout: 30 * 1000, // 请求超时时间
+	method: 'post',
 	headers: {
 		'Content-Type': 'application/json',
 	},
@@ -96,7 +101,7 @@ request.interceptors.response.use(
 						},
 					});
 				}
-				Message.error(res.data.msg ?? '请求出错了');
+				Message.error(res.data.message ?? '请求出错了');
 				return Promise.reject(res.data);
 			}
 		}

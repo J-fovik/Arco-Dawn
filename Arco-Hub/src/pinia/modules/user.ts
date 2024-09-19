@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import curryingRequest, { USER_APIS } from '@/service';
+import { URL, curryingRequest } from '@/service';
 import jsCookie from 'js-cookie';
 
 export const useUserStore = defineStore('user', () => {
@@ -11,11 +11,10 @@ export const useUserStore = defineStore('user', () => {
 	};
 	// // 	获取用户角色菜单
 	// const getUserMenuList = async (roleId: string) => {
-	// 	const { err, res } = await curryingRequest(() =>
-	// 		USER_APIS.getUserMenuList({
-	// 			roleId,
-	// 		})
-	// 	);
+	// 	const { err, res } = await curryingRequest({
+	// 		url: URL.USER.USER_MENU_LIST,
+	// 		data: { roleId },
+	// 	});
 	// 	// 处理异常
 	// 	if (err) return [];
 	// 	// 返回菜单
@@ -24,11 +23,10 @@ export const useUserStore = defineStore('user', () => {
 	// // 获取角色权限
 	// const getRoleKeyList = async (roleId: string) => {
 	// 	// 获取权限列表
-	// 	const { err, res } = await curryingRequest(() =>
-	// 		USER_APIS.getRoleKeyList({
-	// 			roleId,
-	// 		})
-	// 	);
+	// 	const { err, res } = await curryingRequest({
+	// 		url: URL.USER.ROLE_KEY_LIST,
+	// 		data: { roleId },
+	// 	});
 	// 	// 处理错误
 	// 	if (err) return [];
 	// 	// 返回结果
@@ -36,9 +34,12 @@ export const useUserStore = defineStore('user', () => {
 	// };
 	// 获取用户信息
 	const initUserInfo = async () => {
-		const { res, err } = await curryingRequest(() => USER_APIS.getUserInfo());
-		// 处理错误
-		if (err) return false;
+		// const { res, err } = await curryingRequest({
+		// 	url: URL.USER.INFO,
+		// 	timeout: 5000,
+		// });
+		// // 处理错误
+		// if (err) return false;
 		// 获取权限啊信息
 		const [
 			// menuList,
@@ -47,15 +48,17 @@ export const useUserStore = defineStore('user', () => {
 			// getUserMenuList(res?.data.roleId),
 			// getRoleKeyList(res?.data.roleId),
 		]);
-		// 设置token
-		if (res?.data.token) {
-			jsCookie.set('userToken', res?.data.token);
-		}
+		// // 设置token
+		// if (res?.data.token) {
+		// 	jsCookie.set('userToken', res?.data.token);
+		// }
+		const list = localStorage.getItem('roleList');
 		// 设置用户信息
 		setUserInfo({
-			...res?.data,
+			userId: 'userId',
+			// ...res?.data,
 			// menuList,
-			// roleList,
+			roleList: list ? JSON.parse(list) : [],
 		});
 		// 获取成功
 		return true;

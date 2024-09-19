@@ -1,10 +1,7 @@
 <template>
 	<ZsContent>
-		<a-card
-			title="折线图"
-			:body-style="{ padding: '10px' }"
-			:header-style="{ padding: '10px' }"
-		>
+		<DataPanel />
+		<a-card title="折线图" class="general-card" style="margin-top: 20px">
 			<a-grid
 				:cols="{ xs: 1, sm: 1, md: 2, lg: 2, xl: 3, xxl: 3 }"
 				:col-gap="12"
@@ -22,12 +19,7 @@
 				</a-grid-item>
 			</a-grid>
 		</a-card>
-		<a-card
-			title="柱状图"
-			:body-style="{ padding: '10px' }"
-			:header-style="{ padding: '10px' }"
-			style="margin-top: 2px; margin-bottom: 2px"
-		>
+		<a-card title="柱状图" class="general-card" style="margin-top: 20px">
 			<a-grid
 				:cols="{ xs: 1, sm: 1, md: 2, lg: 2, xl: 3, xxl: 3 }"
 				:col-gap="12"
@@ -45,11 +37,7 @@
 				</a-grid-item>
 			</a-grid>
 		</a-card>
-		<a-card
-			title="饼状图"
-			:content-style="{ padding: '10px' }"
-			:header-style="{ padding: '10px' }"
-		>
+		<a-card title="饼状图" class="general-card" style="margin-top: 20px">
 			<a-grid
 				:cols="{ xs: 1, sm: 1, md: 2, lg: 2, xl: 3, xxl: 3 }"
 				:col-gap="12"
@@ -67,10 +55,16 @@
 				</a-grid-item>
 			</a-grid>
 		</a-card>
+		<DataOrder style="margin-top: 20px" />
+		<OrderTrend style="margin-top: 20px" />
 	</ZsContent>
 </template>
 
 <script lang="ts" setup name="Home">
+import DataPanel from './components/DataPanel.vue';
+import DataOrder from './components/DataOrder.vue';
+import OrderTrend from './components/OrderTrend.vue';
+
 import {
 	options1,
 	options2,

@@ -17,5 +17,14 @@ export default {
 			},
 			component: () => import('@/views/make/iconSelector/index.vue'),
 		},
+		{
+			path: 'wEditor',
+			name: 'MakeWEditor',
+			meta: {
+				requiresAuth: true,
+				title: '富文本',
+			},
+			component: () => import('@/views/make/wEditor/index.vue'),
+		},
 	],
 };

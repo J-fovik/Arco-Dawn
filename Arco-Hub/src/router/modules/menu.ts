@@ -9,32 +9,32 @@ export default {
 	},
 	children: [
 		{
-			path: 'pageOne',
-			name: 'MenuPageOne',
+			path: 'proTableOne',
+			name: 'MenuProTableOne',
 			meta: {
 				requiresAuth: true,
 				title: '表格菜单(一)',
 			},
-			component: () => import('@/views/menu/pageOne/index.vue'),
+			component: () => import('@/views/menu/proTableOne/index.vue'),
 		},
 		{
-			path: 'pageTwo',
-			name: 'MenuPageTwo',
+			path: 'proTableTwo',
+			name: 'MenuProTableTwo',
 			meta: {
 				requiresAuth: true,
 				title: '表格菜单(二)',
 			},
-			component: () => import('@/views/menu/pageTwo/index.vue'),
+			component: () => import('@/views/menu/proTableTwo/index.vue'),
 		},
 		{
-			path: 'pageTwo/operate',
-			name: 'MenuPageTwoOperate',
+			path: 'proTableTwo/operate',
+			name: 'MenuProTableTwoOperate',
 			meta: {
 				requiresAuth: true,
 				title: '表格菜单(二)维护',
-				superiorName: 'MenuPageTwo', // 对应上级name
+				superiorName: 'MenuProTableTwo', // 对应上级name
 			},
-			component: () => import('@/views/menu/pageTwo/operate/index.vue'),
+			component: () => import('@/views/menu/proTableTwo/operate/index.vue'),
 		},
 		{
 			path: 'treeControl',
@@ -44,6 +44,24 @@ export default {
 				title: '树形控件',
 			},
 			component: () => import('@/views/menu/treeControl/index.vue'),
+		},
+		{
+			path: 'tableRules',
+			name: 'MenuTableRules',
+			meta: {
+				requiresAuth: true,
+				title: '表单表格验证',
+			},
+			component: () => import('@/views/menu/tableRules/index.vue'),
+		},
+		{
+			path: 'roleMenu',
+			name: 'MenuRoleMenu',
+			meta: {
+				requiresAuth: true,
+				title: '角色权限分配',
+			},
+			component: () => import('@/views/menu/roleMenu/index.vue'),
 		},
 	],
 };

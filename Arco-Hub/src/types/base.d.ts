@@ -39,7 +39,8 @@ interface AppState {
 }
 
 interface UserState {
-	username?: string;
+	userName?: string;
+	loginName?: string;
 	userLevel?: string;
 	userId?: string;
 	userAccount?: string;
@@ -61,8 +62,6 @@ interface UserState {
 	address?: string;
 	roleList?: Array<any>;
 	menuList?: Array<any>;
-	zjzhh?: string;
-	zjzhm?: string;
 	quota?: number;
 	totalRechargeAmountAll?: number;
 	quotaAll?: number;
