@@ -22,7 +22,7 @@ export const useTable = (columns: TableCustomColumnData[], callBack: () => void)
 		stripe: false,
 		size: 'medium' as SizeProps,
 		columnResizable: false,
-		selectedKeys: [] as Array<any>,
+		selectedKeys: [] as Array<string | number>,
 		rowSelection: {
 			type: 'checkbox' as any,
 			showCheckedAll: true,
