@@ -1,0 +1,19 @@
+@tailwind base;
+
+@layer base {
+	body {
+		background-color: #f8f8f8;
+		font-size: 16px;
+		color: #333333;
+	}
+	.card-box-shadow {
+		box-shadow: 0 4px 8px -8px rgba(31, 35, 41, 0.03), 0 6px 12px 0 rgba(31, 35, 41, 0.03),
+			0 8px 24px 8px rgba(31, 35, 41, 0.03);
+	}
+	.transitionAll {
+		transition: all 0.8s ease 0s;
+	}
+	.zsButton {
+		@apply bg-[#657FFF] w-full h-[40px] leading-[40px] rounded-[5px_5px] text-center cursor-pointer text-white text-[16px] flex justify-center items-center;
+	}
+}

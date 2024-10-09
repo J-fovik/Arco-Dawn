@@ -1,0 +1,12 @@
+{
+  "name": "dayjs",
+  "configKey": "dayjs",
+  "compatibility": {
+    "nuxt": ">=3"
+  },
+  "version": "2.1.11",
+  "builder": {
+    "@nuxt/module-builder": "0.8.3",
+    "unbuild": "2.0.0"
+  }
+}
