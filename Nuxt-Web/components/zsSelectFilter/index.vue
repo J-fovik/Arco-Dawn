@@ -1,11 +1,14 @@
 <template>
-	<div class="w-full">
-		<div v-for="item in data" :key="item.key">
+	<div class="max-w-container mx-auto">
+		<div v-for="(item, index) in data" :key="item.key">
 			<div v-if="item.isShow" class="flex mt-[10px]">
 				<div class="text-[16px] mr-[15px] p-[5px_8px]">
 					{{ item.title }}
 				</div>
-				<ul class="flex flex-1 p-[0px] flex-row flex-wrap">
+				<ul
+					class="flex flex-1 p-[0px] flex-row flex-wrap"
+					:class="item.isCollapse ? 'h-[30px] overflow-hidden' : ''"
+				>
 					<li
 						v-for="option in item.options"
 						class="flex items-center p-[5px_8px] mb-[2px] px-[6px] mr-[10px] text-[16px] cursor-pointer rounded-xl"
@@ -21,6 +24,15 @@
 						<span>{{ option.label }}</span>
 					</li>
 				</ul>
+				<a-button
+					v-if="item.isCollapse || item.isCollapse === false"
+					type="dashed"
+					@click="changeCollapse(item.isCollapse, index)"
+				>
+					展开
+					<icon-down v-if="item.isCollapse" />
+					<icon-up v-else />
+				</a-button>
 			</div>
 		</div>
 	</div>
@@ -37,6 +49,7 @@ interface SelectDataProps {
 	isShow: boolean; // 是否展示
 	key: string; // 当前筛选项 key 值
 	multiple?: boolean; // 是否为多选
+	isCollapse?: boolean; // 是否展示折叠
 	options: OptionsProps[]; // 筛选数据
 }
 
@@ -95,6 +108,11 @@ const select = (item: SelectDataProps, option: OptionsProps) => {
 		}
 	}
 	emits('change', selected.value);
+};
+
+// 改变当前isCollapse
+const changeCollapse = (isCollapse: boolean, index: any) => {
+	props.data[index].isCollapse = !isCollapse;
 };
 </script>
 
