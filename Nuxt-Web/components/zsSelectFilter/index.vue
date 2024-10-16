@@ -29,7 +29,7 @@
 					type="dashed"
 					@click="changeCollapse(item.isCollapse, index)"
 				>
-					展开
+					{{ item.isCollapse ? '展开' : '收起' }}
 					<icon-down v-if="item.isCollapse" />
 					<icon-up v-else />
 				</a-button>
