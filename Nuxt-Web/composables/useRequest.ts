@@ -1,4 +1,4 @@
-export default <T = any>(api: () => Promise<Array<any>>, defaultValue = {} as T) => {
+export default <T = any>(api: () => Promise<any>, defaultValue = {} as T) => {
 	// 信息
 	const data = ref<T>(defaultValue);
 	// loading

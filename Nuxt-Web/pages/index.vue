@@ -449,6 +449,22 @@ const { data } = await useAsyncData(
 		}),
 	}
 );
+// 自定义请求
+const {
+	data: orderInfo,
+	loading,
+	initData,
+} = useRequest(async () => {
+	// const [err, res] = await $zsFetch(API_URLS.AI_V2.ORDER_INFO, {
+	// 	body: {
+	// 		id: props.basicsData.id,
+	// 	},
+	// });
+	// // 处理错误
+	// if (err) return {};
+	// 返回集合
+	return {};
+});
 </script>
 <style scoped>
 .bgLinearOne {

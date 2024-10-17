@@ -1,6 +1,6 @@
 
 import { updateAppConfig } from '#app'
-import { defuFn } from 'C:/Users/二跃/Desktop/zs/高报/gb_web/node_modules/defu/dist/defu.mjs'
+import { defuFn } from 'C:/Users/二跃/Desktop/yue/Arco-Dawn/Nuxt-Web/node_modules/defu/dist/defu.mjs'
 
 const inlineConfig = {
   "icon": {
