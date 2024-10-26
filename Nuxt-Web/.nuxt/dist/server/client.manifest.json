@@ -7,12 +7,12 @@
     "module": true,
     "resourceType": "script"
   },
-  "C:/Users/二跃/Desktop/yue/Arco-Dawn/Nuxt-Web/node_modules/nuxt/dist/app/entry.js": {
+  "D:/yue/Arco-Dawn/Nuxt-Web/node_modules/nuxt/dist/app/entry.js": {
     "resourceType": "script",
     "module": true,
     "prefetch": true,
     "preload": true,
     "isEntry": true,
-    "file": "C:/Users/二跃/Desktop/yue/Arco-Dawn/Nuxt-Web/node_modules/nuxt/dist/app/entry.js"
+    "file": "D:/yue/Arco-Dawn/Nuxt-Web/node_modules/nuxt/dist/app/entry.js"
   }
 }

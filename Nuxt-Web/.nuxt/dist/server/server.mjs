@@ -1,1 +1,1 @@
-export { default } from "file:///C:/Users/%E4%BA%8C%E8%B7%83/Desktop/yue/Arco-Dawn/Nuxt-Web/node_modules/@nuxt/vite-builder/dist/runtime/vite-node.mjs"
+export { default } from "file:///D:/yue/Arco-Dawn/Nuxt-Web/node_modules/@nuxt/vite-builder/dist/runtime/vite-node.mjs"
