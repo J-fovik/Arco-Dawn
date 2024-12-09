@@ -1,0 +1,1 @@
+import{u as t}from"./entry.1a40d7cc.js";import{m as s,D as o,E as a,Q as e}from"./swiper-vue.1d76a0fa.js";const n={class:"max-w-container mx-auto"},c=e("div",{class:"flex items-center justify-center flex-col min-h-[60vh]"},[e("h1",{class:"font-bold"},"暂未开放 敬请期待")],-1),r=[c],f=s({__name:"plan",setup(i){return t({title:"升学规划"}),(_,l)=>(o(),a("div",n,r))}});export{f as default};

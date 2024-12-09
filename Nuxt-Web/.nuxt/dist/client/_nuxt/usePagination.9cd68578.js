@@ -1,0 +1,1 @@
+import{a}from"./swiper-vue.1d76a0fa.js";const i=(e,r={defaultCurrent:1})=>{const t=a({total:1,current:r.defaultCurrent,pageSize:10,showTotal:!0,showPageSize:!0});return{pagination:t,resetData:()=>{t.value.current=1,e&&e()},onPageChange:n=>{t.value.current=n,e&&e()},onPageSizeChange:n=>{t.value.current=1,t.value.pageSize=n,e&&e()}}};export{i as u};

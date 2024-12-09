@@ -7,15 +7,15 @@
 		:align-center="alignCenter"
 		:mask-closable="false"
 		:footer="false"
-        :closable="false"
-        body-style="padding: 0;overflow: visible"
-        :modal-style="{ 'background-color': 'transparent' }"
+		:closable="false"
+		body-style="padding: 0;overflow: visible"
+		:modal-style="{ 'background-color': 'transparent' }"
 	>
-        <slot></slot>
+		<slot></slot>
 	</a-modal>
 </template>
 
-<script lang="ts" setup>
+<script lang="ts" setup name="ZsModal">
 // 父组件参数
 withDefaults(
 	defineProps<{
@@ -26,11 +26,11 @@ withDefaults(
 	{
 		top: '15%',
 		show: true,
-		alignCenter: false
+		alignCenter: false,
 	}
 );
 // 插槽
 defineSlots<{
-    default(): any;
+	default(): any;
 }>();
 </script>

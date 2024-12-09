@@ -15,7 +15,9 @@ type NuxtAppInjections =
   InjectionType<typeof import("../../node_modules/@nuxt/icon/dist/runtime/plugin").default> &
   InjectionType<typeof import("../../node_modules/@nuxt/image/dist/runtime/plugin").default> &
   InjectionType<typeof import("../../node_modules/nuxt/dist/app/plugins/chunk-reload.client").default> &
+  InjectionType<typeof import("../../plugins/appPlugin").default> &
   InjectionType<typeof import("../../plugins/disableDevtoolPlugin.client").default> &
+  InjectionType<typeof import("../../plugins/zsAMsgPlugin").default> &
   InjectionType<typeof import("../../plugins/zsFetchPlugin").default>
 
 declare module '#app' {

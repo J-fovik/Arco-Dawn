@@ -4,14 +4,16 @@
 			<div>
 				<span
 					class="cursor-pointer mr-[20px] text-[#999999] hover:text-[#657FFF]"
-					v-for="item in menuList"
+					v-for="item in routeMenuList"
 				>
 					<nuxt-link :to="item.path">
 						{{ item.name }}
 					</nuxt-link>
 				</span>
 				<div class="mt-[40px] text-[#999999]">
-					毕业之家志愿填报 山东毕业之家科技有限公司 @2018-2024 鲁ICP备2022024473号-1
+					<!-- 毕业之家志愿填报 山东毕业之家科技有限公司 @2018-2024 鲁ICP备2022024473号-1 -->
+					Copyright © 2024 四川毕业之家科技有限公司 蜀ICP备2023034485号-1
+					联系电话：4000663985
 				</div>
 			</div>
 			<div class="flex flex-col items-center justify-center">
@@ -27,32 +29,4 @@
 	</footer>
 </template>
 
-<script setup lang="ts" name="ZsFooter">
-// 导航菜单
-const menuList = [
-	{
-		name: '查大学',
-		path: '/college',
-	},
-	{
-		name: '查专业',
-		path: '/major',
-	},
-	{
-		name: '生涯测评',
-		path: '/evaluate',
-	},
-	{
-		name: '新高考选科',
-		path: '/subject',
-	},
-	{
-		name: '智能填报',
-		path: '/choice',
-	},
-	{
-		name: '升学规划',
-		path: '/plan',
-	},
-];
-</script>
+<script setup lang="ts" name="ZsFooter"></script>

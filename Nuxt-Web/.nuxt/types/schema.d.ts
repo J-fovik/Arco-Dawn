@@ -27,6 +27,8 @@ declare module 'nuxt/schema' {
    baseURL: string,
 
    serverURL: string,
+
+   payURL: string,
   }
 }
 declare module 'vue' {

@@ -1,20 +1,21 @@
 <template>
-	<div class="max-w-container mx-auto">
+	<div class="text-[#333]">
 		<div v-for="(item, index) in data" :key="item.key">
-			<div v-if="item.isShow" class="flex mt-[10px]">
-				<div class="text-[16px] mr-[15px] p-[5px_8px]">
+			<div v-if="item.isShow && item.options.length" class="flex">
+				<div class="text-[14px] mr-[15px] p-[5px_8px] text-[#606266]">
 					{{ item.title }}
 				</div>
+				<!-- 数据 -->
 				<ul
 					class="flex flex-1 p-[0px] flex-row flex-wrap"
 					:class="item.isCollapse ? 'h-[30px] overflow-hidden' : ''"
 				>
 					<li
 						v-for="option in item.options"
-						class="flex items-center p-[5px_8px] mb-[2px] px-[6px] mr-[10px] text-[16px] cursor-pointer rounded-xl"
+						class="flex items-center p-[5px_8px] mb-[5px] px-[6px] mr-[10px] text-[14px] cursor-pointer rounded-[4px] hover:text-[#7C92FF]"
 						:key="option.value"
 						:class="{
-							active:
+							'bg-[#F2F5FF] text-[#7C92FF]':
 								option.value === selected[item.key] ||
 								(Array.isArray(selected[item.key]) &&
 									selected[item.key].includes(option.value)),
@@ -26,10 +27,12 @@
 				</ul>
 				<a-button
 					v-if="item.isCollapse || item.isCollapse === false"
-					type="dashed"
+					type="text"
+					size="small"
+					class="!text-[#7C92FF]"
 					@click="changeCollapse(item.isCollapse, index)"
 				>
-					{{ item.isCollapse ? '展开' : '收起' }}
+					<span class="mr-[5px]">{{ item.isCollapse ? '更多' : '收起' }}</span>
 					<icon-down v-if="item.isCollapse" />
 					<icon-up v-else />
 				</a-button>
@@ -54,7 +57,7 @@ interface SelectDataProps {
 }
 
 interface SelectFilterProps {
-	data?: SelectDataProps[]; // 选择的列表数据
+	data?: any; // 选择的列表数据
 	defaultValues?: { [key: string]: any }; // 默认值
 }
 // 接受父组件参数及设置默认值
@@ -70,14 +73,13 @@ const selected = ref<{ [key: string]: any }>({});
 watch(
 	() => props.defaultValues,
 	() => {
-		props.data.forEach((item) => {
+		props.data.forEach((item: any) => {
 			if (item.multiple) selected.value[item.key] = props.defaultValues[item.key] ?? [''];
 			else selected.value[item.key] = props.defaultValues[item.key] ?? '';
 		});
 	},
 	{ deep: true, immediate: true }
 );
-
 /**
  * @description 选择筛选项
  * @param {Object} item 选中的哪项列表
@@ -115,10 +117,3 @@ const changeCollapse = (isCollapse: boolean, index: any) => {
 	props.data[index].isCollapse = !isCollapse;
 };
 </script>
-
-<style scoped>
-li.active {
-	color: white;
-	background: #657fff;
-}
-</style>

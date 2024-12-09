@@ -1,5 +1,9 @@
 <template>
-	<div class="max-w-container mx-auto px-[1%]">升学规划</div>
+	<div class="max-w-container mx-auto">
+		<div class="flex items-center justify-center flex-col min-h-[60vh]">
+			<h1 class="font-bold">暂未开放 敬请期待</h1>
+		</div>
+	</div>
 </template>
 
 <script setup lang="ts">

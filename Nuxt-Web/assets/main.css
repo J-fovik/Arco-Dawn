@@ -2,7 +2,7 @@
 
 @layer base {
 	body {
-		background-color: #f8f8f8;
+		background-color: #ffffff;
 		font-size: 16px;
 		color: #333333;
 	}
@@ -10,10 +10,36 @@
 		box-shadow: 0 4px 8px -8px rgba(31, 35, 41, 0.03), 0 6px 12px 0 rgba(31, 35, 41, 0.03),
 			0 8px 24px 8px rgba(31, 35, 41, 0.03);
 	}
+	.f-c-c {
+		@apply flex justify-center items-center;
+	}
 	.transitionAll {
 		transition: all 0.8s ease 0s;
 	}
-	.zsButton {
-		@apply bg-[#657FFF] w-full h-[40px] leading-[40px] rounded-[5px_5px] text-center cursor-pointer text-white text-[16px] flex justify-center items-center;
+	/* 价格 */
+	.text-price::before {
+		content: '¥';
+		font-size: 90%;
+		margin-right: 4px;
+	}
+	/* 展开更多按钮样式 */
+	.expandMore {
+		@apply flex items-center justify-center w-[96px] h-[40px] leading-[40px] border-solid border border-[#EDEDED] rounded-[4px] text-[14px] text-[#333333] text-center cursor-pointer;
+	}
+	/* 文字多行省略号 */
+	.mle {
+		display: -webkit-box;
+		overflow: hidden;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 8;
+	}
+	.no-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
+
+	/* Hide scrollbar for IE, Edge and Firefox */
+	.no-scrollbar {
+		-ms-overflow-style: none; /* IE and Edge */
+		scrollbar-width: none; /* Firefox */
 	}
 }

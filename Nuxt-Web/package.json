@@ -19,8 +19,16 @@
   "dependencies": {
     "@nuxt/image": "^1.8.0",
     "@nuxtjs/tailwindcss": "^6.12.1",
+    "@vue-office/pdf": "^2.0.7",
+    "@vueuse/core": "^11.1.0",
     "console-ban": "^5.0.0",
     "dayjs-nuxt": "^2.1.11",
-    "nuxt-swiper": "^1.2.2"
+    "echarts": "^5.5.1",
+    "js-md5": "^0.8.3",
+    "nuxt-swiper": "^1.2.2",
+    "qrcode": "^1.5.4",
+    "sass": "^1.80.3",
+    "sortablejs": "^1.15.3",
+    "vue-draggable-plus": "^0.6.0"
   }
 }

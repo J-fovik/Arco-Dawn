@@ -10,7 +10,7 @@
 					</template>
 					<!-- 企业微信 -->
 					<div
-						class="relative group flex flex-col cursor-pointer items-center justify-center hover:text-primary"
+						class="relative group flex flex-col cursor-pointer items-center justify-center hover:text-[#657fff]"
 					>
 						<icon-wechat size="30" />
 						<span class="text-[14px] mt-[5px]">企业微信</span>
@@ -27,7 +27,7 @@
 					</div>
 					<!-- 客服电话 -->
 					<div
-						class="relative group flex flex-col cursor-pointer items-center justify-center hover:text-primary"
+						class="relative group flex flex-col cursor-pointer items-center justify-center hover:text-[#657fff]"
 					>
 						<icon-phone size="30" />
 						<span class="text-[14px] mt-[5px]">客服电话</span>

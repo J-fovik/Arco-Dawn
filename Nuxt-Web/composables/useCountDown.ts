@@ -30,10 +30,10 @@ export const useCountDown = (value: number, interval: number = 1000, callback?: 
 		clearTimeout(timer.value);
 		second.value = value;
 	};
-	// 页面卸载时清除定时器
-	onUnmounted(() => {
-		if (timer.value !== null) clearTimeout(timer.value);
-	});
+	// // 页面卸载时清除定时器
+	// onUnmounted(() => {
+	// 	if (timer.value !== null) clearTimeout(timer.value);
+	// });
 	// 暴露API
 	return { second, isStart, startCountDown, resetCountDown };
 };

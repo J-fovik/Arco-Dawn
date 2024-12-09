@@ -1,7 +1,7 @@
 export default (
 	callBack?: () => void,
 	options = {
-		defaultCurrent: 1
+		defaultCurrent: 1,
 	}
 ) => {
 	// 分页控制
@@ -24,6 +24,13 @@ export default (
 		// 回调获取数据
 		callBack && callBack();
 	};
+	// 重置分页筛选
+	const resetData = () => {
+		//  重置分页信息
+		pagination.value.current = 1;
+		// 回调获取数据
+		callBack && callBack();
+	};
 	// 暴露API
-	return { pagination, onPageChange, onPageSizeChange };
+	return { pagination, resetData, onPageChange, onPageSizeChange };
 };
