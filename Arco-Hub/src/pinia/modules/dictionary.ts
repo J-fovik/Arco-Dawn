@@ -24,7 +24,10 @@ export const useDictionaryStore = defineStore('dictionary', () => {
 			{ label: 'eee', type: 'B', value: '444' },
 		];
 		// 循环添加map数据
-		list.forEach((item: any) => {
+		list.sort((a: any, b: any) => a?.sort - b?.sort).forEach((item: any) => {
+			// 在每个对象中添加value属性
+			item.value = item.value;
+			item.label = item.label;
 			if (hasValue(item.type)) {
 				const dictionaryList = getValue(item.type) as Array<any>;
 				basicsMap.value.set(item.type, [...dictionaryList, item]);
