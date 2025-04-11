@@ -101,6 +101,14 @@
 					>
 						导出兑换码
 					</a-button>
+					<a-button
+						status="danger"
+						type="outline"
+						:loading="activeKey === '加载全局Loading'"
+						@click="openLoading"
+					>
+						加载全局Loading
+					</a-button>
 				</a-space>
 			</template>
 			<template #table>
@@ -176,6 +184,7 @@
 <script lang="ts" setup name="MenuProTableOne">
 import {
 	useForm,
+	useLoading,
 	useTable,
 	useModal,
 	useBasicsState,
@@ -190,6 +199,8 @@ import { TABLE_DATA, SEX_OPTIONS, TYPES_A_OPTIONS, TYPES_B_OPTIONS, STATUS_OPTIO
 import Operation from './components/index.vue';
 /* 对话框 */
 const { warningModal } = useModal();
+// 网站全局控制
+const { setGlobalLoading } = useLoading();
 /* 页面唯一元素控制 */
 const [activeKey, setActiveKey] = useBasicsState<string | null>(null);
 /* 表单hooks */
@@ -304,6 +315,16 @@ const changeSwitch = async (row: any) => {
 	// if (err) return;
 	// 获取数据
 	initData();
+};
+// 开启全局loading
+const openLoading = async (files: Array<any>) => {
+	// 开启全局loading
+	setGlobalLoading(true, '开启全局loading');
+
+	setTimeout(() => {
+		// 关闭全局loading
+		setGlobalLoading(false);
+	}, 2000);
 };
 /* 删除 (兼容单个删除和批量删除) */
 const batchTableRows = (id?: any) => {

@@ -4,7 +4,10 @@ import jsCookie from 'js-cookie';
 
 export const useUserStore = defineStore('user', () => {
 	// 用户信息
-	const userInfo = ref<UserState>({});
+	const userInfo = ref<UserState>({
+		loading: false, // loading
+		loadingContent: '正在加载...', // loading文本
+	});
 	// 设置用户信息
 	const setUserInfo = (value: UserState) => {
 		userInfo.value = value;

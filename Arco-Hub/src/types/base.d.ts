@@ -66,4 +66,6 @@ interface UserState {
 	totalRechargeAmountAll?: number;
 	quotaAll?: number;
 	retentionMoneyAll?: number;
+	loading?: boolean;
+	loadingContent?: string;
 }

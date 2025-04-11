@@ -1,6 +1,7 @@
 import type { TableColumnData } from '@arco-design/web-vue';
 import type { Ref, UnwrapRef } from 'vue';
 import { Modal } from '@arco-design/web-vue';
+import { useUserStore } from '@/pinia';
 
 export interface TableCustomColumnData extends TableColumnData {
 	show?: boolean;
@@ -226,4 +227,17 @@ export const useModal = () => {
 	};
 	// 暴露api
 	return { warningModal, infoModal, successModal, errorModal };
+};
+
+// 全局loading加载
+export const useLoading = () => {
+	const userStore = useUserStore();
+	// 添加类型弹窗
+	const setGlobalLoading = (loading: boolean, content = '正在加载') => {
+		if (userStore.userInfo.loading !== loading) {
+			userStore.userInfo.loadingContent = content;
+			userStore.userInfo.loading = loading;
+		}
+	};
+	return { setGlobalLoading };
 };

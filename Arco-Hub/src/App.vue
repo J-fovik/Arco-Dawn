@@ -2,15 +2,20 @@
 	<a-config-provider :size="appStore.appConfig.size">
 		<router-view />
 		<zs-global-setting />
+		<zs-loading v-if="userStore.userInfo.loading" />
 	</a-config-provider>
 </template>
 
 <script lang="ts" setup name="App">
 import { useDebounceFn, useWindowSize } from '@vueuse/core';
-import { useAppStore } from '@/pinia';
+import { useAppStore, useUserStore } from '@/pinia';
 import { useDictionaryStore } from '@/pinia';
+import ZsLoading from '@/components/zsLoading/index.vue';
+
 // 应用配置
 const appStore = useAppStore();
+const userStore = useUserStore();
+
 // 初始化字典
 useDictionaryStore();
 // 屏幕宽度

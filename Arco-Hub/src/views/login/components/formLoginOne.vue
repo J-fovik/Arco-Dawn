@@ -70,23 +70,23 @@ const login = async () => {
 	// 防止点击回车键
 	if (isDisabled.value) return;
 	// 发起请求
-	const { res, err } = await curryingRequest(
-		{
-			url: URL.USER.LOGIN_ONE,
-			data: {
-				loginName: form.value.loginName,
-				passWord: md5(form.value.passWord),
-			},
-		},
-		{
-			before: () => setActiveKey('login'),
-			after: () => setActiveKey(null),
-		}
-	);
-	// 处理错误
-	if (err) return;
+	// const { res, err } = await curryingRequest(
+	// 	{
+	// 		url: URL.USER.LOGIN_ONE,
+	// 		data: {
+	// 			loginName: form.value.loginName,
+	// 			passWord: md5(form.value.passWord),
+	// 		},
+	// 	},
+	// 	{
+	// 		before: () => setActiveKey('login'),
+	// 		after: () => setActiveKey(null),
+	// 	}
+	// );
+	// // 处理错误
+	// if (err) return;
 	// 设置用户信息
-	jsCookie.set('userToken', res?.data.token);
+	jsCookie.set('userToken', '123456789');
 	// 获取用户信息
 	const isSuccess = await initUserInfo();
 	// 获取成功跳转

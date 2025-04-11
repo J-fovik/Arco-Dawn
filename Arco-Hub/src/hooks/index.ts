@@ -7,4 +7,4 @@ export {
 	useAsyncNoInitData,
 } from './modules/request';
 export { useChartOption } from './modules/echarts';
-export { useForm, useTable, useModal } from './modules/arco';
+export { useForm, useTable, useModal, useLoading } from './modules/arco';
